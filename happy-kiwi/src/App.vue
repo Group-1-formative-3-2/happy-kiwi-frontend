@@ -32,7 +32,6 @@ export default {
 </script>
 
 <style>
- 
   .header{
     display: flex;
     align-items: center;
