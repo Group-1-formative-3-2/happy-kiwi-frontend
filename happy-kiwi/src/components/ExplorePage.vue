@@ -1,6 +1,5 @@
 <template>
-    <div>
-
+    <div class="ExploreWrapper">
         <div class="postEdit" v-show="!postSwitch">
             <input type="text" v-model.trim="id" disabled placeholder="Post ID">
             <input type="text" placeholder="Animal Name" v-model="formValues.animalName">
@@ -23,7 +22,7 @@
                     <p>{{ post.description }}</p>
                 </div>
                 <div class="postButtons">
-                    <button>Comment</button>
+                    <button class="commentBtn">Comment</button>
                     <button class="editBtn" ><a href="#" @click="getDoc(post._id), postSwitch = false">Edit</a></button> 
                 </div>
             </li>
@@ -130,20 +129,58 @@ const api = "https://curious-parfait-81c145.netlify.app/.netlify/functions/api/"
 }
 </script>
  
-<style scoped>
+<style scoped >
  ul {
     list-style-type: none;
  }
 
  li{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     color: black;
-    padding: 20px;
+    padding: 50px;
+
  }
 
  img{
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 400px;
     object-fit: cover;
+ }
+ .postContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  padding: 0;
+ }
+
+ .postButtons{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+ }
+
+
+ button{
+  padding: 0.6em 3em;
+ }
+ .ExploreWrapper{
+  background-image: url(../assets/Explore_Page.jpg);
+  padding: 50px;
+
+ }
+
+ @media screen and (max-width: 1600px){
+  .postContainer{
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+
+ }
+ @media screen and (max-width: 900px){
+  .postContainer{
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
  }
 </style> 
