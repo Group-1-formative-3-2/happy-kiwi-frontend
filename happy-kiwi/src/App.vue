@@ -6,9 +6,11 @@
      <router-link to="/explore"  style="color: #000;">Explore</router-link>
      <router-link to="/login"  style="color: #000;">Login</router-link>
      <router-link to="/slideshow"  style="color: #000;">View</router-link>
+     <router-view></router-view>
+     
      
    </div>
-   <router-view></router-view>
+   
  </div>
 </template>
 
@@ -32,6 +34,11 @@ export default {
 </script>
 
 <style>
+  router-view{
+      width: 100vw;
+      height: 100vh;
+      background-image: url(../assets/Explore_Page.jpg);
+   }
   .header{
     display: flex;
     align-items: center;
