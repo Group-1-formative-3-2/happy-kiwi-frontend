@@ -1,15 +1,18 @@
 <template>
-  <div class="header">
+  <div>
+    <div class="header">
    <a href="/"><img src="./assets/Happy Kiwi Logo-01.png" alt=""></a>
    <div class="router_links">
      <router-link to="/"  style="color: #000;">Home</router-link>
      <router-link to="/explore"  style="color: #000;">Explore</router-link>
      <router-link to="/login"  style="color: #000;">Login</router-link>
      <router-link to="/slideshow"  style="color: #000;">View</router-link>
-     
-   </div>
-   <router-view></router-view>
+     </div>
+   
  </div>
+ <router-view></router-view>
+  </div>
+  
 </template>
 
 <script>
