@@ -47,7 +47,6 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -74,6 +73,86 @@ button:focus-visible {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+/* Create Post CSS */
+
+.back {
+  width: 70%;
+  height: 70%;
+  position: absolute;
+  z-index: 0;
+}
+#bg {
+  position: fixed;
+  z-index: -2; 
+  top: -40%; 
+  left: -40%; 
+  width: 200%; 
+  height: 200%;
+}
+#bg img {
+  position: absolute; 
+  z-index: -2;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+.boxWrapper{
+  width: 672px;
+  height: 684px;
+  background-color:rgba(44, 44, 44, 0.33);
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(27px);
+  overflow-y: scroll;
+  margin-top: 50px;
+}
+.post{
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  margin-top: 50px;
+}
+.postBtn {
+  background-color: #006E87;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  width: 190px;
+  height: 49px;
+}
+.head {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: white;
+  margin-top: 0;
+}
+.title {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: white;
+  text-align: left;
+  margin-left: 3.7rem;
+}
+.createBox {
+  width: 558px;
+  height: 57px;
+  margin-left: 58px;
+}
+.desBox {
+  width: 558px;
+  height: 103px;
+  margin-left: 58px;
 }
 
 @media (prefers-color-scheme: light) {
