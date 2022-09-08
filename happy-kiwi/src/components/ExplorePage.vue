@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <div class="postEdit">
+        <div class="postEdit" v-show="!postSwitch">
             <input type="text" v-model.trim="id" disabled placeholder="Post ID">
             <input type="text" placeholder="Animal Name" v-model="formValues.animalName">
             <input type="text" placeholder="Location" v-model="formValues.location">
@@ -11,19 +11,20 @@
             <button @click="deleteDoc(id)">Delete Document</button>
         </div>
        
-        <div class="postDisplay">
+        <div class="postDisplay" v-show="postSwitch">
             <ul class="postContainer">
             <li v-for="post in posts" :key="post" >
                 <div class="postImage">
                     <img :src="post.imgLink" alt=""/>
                 </div>
                 <div class="postContent">
-                    <p>{{post.animalName}}</p>
-                    <p>{{post.location}}</p>
+                    <h2>{{post.animalName}}</h2>
+                    <h3>{{post.location}}</h3>
                     <p>{{ post.description }}</p>
                 </div>
                 <div class="postButtons">
-                    <button class="editBtn" ><a href="#" @click="getDoc(post._id)">Edit</a></button> 
+                    <button>Comment</button>
+                    <button class="editBtn" ><a href="#" @click="getDoc(post._id), postSwitch = false">Edit</a></button> 
                 </div>
             </li>
             </ul>
@@ -47,7 +48,8 @@ const api = "https://curious-parfait-81c145.netlify.app/.netlify/functions/api/"
          location: "",
          description: "",
          imgLink: ""
-       }
+       },
+       postSwitch: true
      }
    },
    methods: {
@@ -89,7 +91,7 @@ const api = "https://curious-parfait-81c145.netlify.app/.netlify/functions/api/"
             alert("Work has been Updated")
             this.getAll()
             this.clearInputs()
-            this.updatedInfoShow = false
+            this.postSwitch = true
             })
             .catch((err) => {
             if (err) throw err;
@@ -104,6 +106,7 @@ const api = "https://curious-parfait-81c145.netlify.app/.netlify/functions/api/"
             console.log(data)
             alert("Work has been deleted")
             this.getAll()
+            this.postSwitch = true
           })
           .catch((err) => {
             if (err) throw err;
@@ -127,6 +130,20 @@ const api = "https://curious-parfait-81c145.netlify.app/.netlify/functions/api/"
 }
 </script>
  
-<style>
- 
+<style scoped>
+ ul {
+    list-style-type: none;
+ }
+
+ li{
+    background-color: white;
+    color: black;
+    padding: 20px;
+ }
+
+ img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+ }
 </style> 
