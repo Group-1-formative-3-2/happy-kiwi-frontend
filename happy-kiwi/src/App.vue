@@ -7,7 +7,6 @@
         <router-link to="/explore" style="color: #000">Explore</router-link>
         <router-link to="/login" style="color: #000">Login</router-link>
         <router-link to="/slideshow" style="color: #000">View</router-link>
-        <router-view></router-view>
       </div>
     </div>
     <router-view></router-view>
