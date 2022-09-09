@@ -1,36 +1,45 @@
 <template>
     <div class="ExploreWrapper">
-        <div class="postEdit" v-show="!postSwitch">
-            <input type="text" v-model.trim="id" disabled placeholder="Post ID">
-            <input type="text" placeholder="Animal Name" v-model="formValues.animalName">
-            <input type="text" placeholder="Location" v-model="formValues.location">
-            <input type="text" placeholder="Description" v-model="formValues.description">
-            <input type="text" placeholder="Image Url" v-model="formValues.imgLink">
-            <button @click="updateDoc">Update Document</button>
-            <button @click="deleteDoc(id)">Delete Document</button>
+      
+        <div class="boxWrapper" v-show="!postSwitch">
+          <div class='post'>
+            <div><h2 class='head'>Edit Post</h2></div>
+            <label class='title' for='Post ID'>Post ID:</label>
+            <input class='createBox' type='title' v-model.trim="id" disabled placeholder="Post ID"><br>
+            <label class='title' for='Animal Name'>animal Name:</label>
+            <input class='createBox' type='text' v-model="formValues.animalName"><br>
+            <label class='title' for='Location'>location:</label>
+            <input class='createBox' type='text' v-model="formValues.location"><br>
+            <label class='title' for='Image Url'>image URL:</label>
+            <input class='createBox' type='text' v-model="formValues.imgLink"><br>
+            <label class='title' for='Description'>description:</label>
+            <input class='desBox' type='text' v-model="formValues.description"><br>
+            <div class="buttonBox">
+              <button @click="postSwitch = true">Cancel</button>
+              <button @click="updateDoc">Update Document</button>
+              <button @click="deleteDoc(id)">Delete Document</button>
+            </div>
+          </div>
         </div>
-       
-        <div class="postDisplay" v-show="postSwitch">
-            <ul class="postContainer">
-            <li v-for="post in posts" :key="post" >
-                <div class="postImage">
-                    <img :src="post.imgLink" alt=""/>
-                </div>
-                <div class="postContent">
-                    <h2>{{post.animalName}}</h2>
-                    <h3>{{post.location}}</h3>
-                    <p>{{ post.description }}</p>
-                </div>
-                <div class="postButtons">
-                    <button class="commentBtn">Comment</button>
-                    <button class="editBtn" ><a href="#" @click="getDoc(post._id), postSwitch = false">Edit</a></button> 
-                </div>
-            </li>
-            </ul>
-        
-        </div>
-  
-  
+      
+      <div class="postDisplay" v-show="postSwitch">
+        <ul class="postContainer">
+          <li v-for="post in posts" :key="post" >
+            <div class="postImage">
+              <img :src="post.imgLink" alt=""/>
+            </div>
+            <div class="postContent">
+              <h2>{{post.animalName}}</h2>
+              <h3>{{post.location}}</h3>
+              <p>{{ post.description }}</p>
+            </div>
+            <div class="postButtons">
+              <button class="commentBtn">Comment</button>
+              <button class="editBtn" ><a href="#" @click="getDoc(post._id), postSwitch = false">Edit</a></button> 
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
  </template>
   
