@@ -35,19 +35,23 @@ export default {
 </script>
 
 <style>
-  .header{
+  router-view {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../assets/Explore_Page.jpg);
+  }
+  .header {
     display: flex;
     align-items: center;
     justify-content: left;
     gap: 30px;
-
   }
 
-  img{
+  img {
     height: 80px;
   }
 
-  .router_links{
+  .router_links {
     display: flex;
     gap: 20px;
     font-size: 1.5em;
