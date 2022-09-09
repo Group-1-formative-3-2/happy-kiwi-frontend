@@ -56,4 +56,10 @@ export default {
     gap: 20px;
     font-size: 1.5em;
   }
+
+  router-view {
+    background-image: url(../src/assets/Home_Page.jpg);
+    width: 100vw;
+    height: 100vh;
+  } 
 </style>
