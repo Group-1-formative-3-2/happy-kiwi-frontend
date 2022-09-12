@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="appContainer">
     <div class="header">
    <a href="/"><img class="logoImg" src="./assets/official_logo.png" alt=""></a>
    <div class="router_links">
@@ -41,6 +41,13 @@ export default {
 </script>
 
 <style>
+
+.appContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
     router-view {
     width: 100vw;
     height: 100vh;

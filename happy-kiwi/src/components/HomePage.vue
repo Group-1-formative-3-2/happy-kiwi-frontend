@@ -65,7 +65,7 @@
 
     .homePage {
         text-align: right;
-        padding: 220px 0;
+        
     }
     
     h1 {
