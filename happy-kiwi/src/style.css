@@ -17,7 +17,7 @@
 
 a {
   font-weight: 500;
-  color: #fff;
+  color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
@@ -150,11 +150,11 @@ h1 {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #000;
+    color: #213547;
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff
+    color: #747bff;
   }
   .commentBtn{
     background-color: #5A6949;

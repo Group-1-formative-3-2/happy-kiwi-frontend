@@ -1,40 +1,43 @@
-
 <template>
   <div class="appContainer">
     <div class="header" v-show="switchSlide">
-      <a href="/"><img src="./assets/Happy Kiwi Logo-01.png" alt=""></a>
+      <a href="/"><img class="logoImg" src="./assets/official_logo.png" alt=""></a>
       <div class="router_links">
-        <router-link to="/"  style="color: #000;">Home</router-link>
-        <router-link to="/explore"  style="color: #000;">Explore</router-link>
-        <router-link to="/login"  style="color: #000;">Login</router-link>
+        <router-link to="/"  >Home</router-link>
+        <router-link to="/explore"  >Explore</router-link>
+        <router-link to="/login"  >Login</router-link>
         <!-- <router-link to="/slideshow"  style="color: #000;">View</router-link> -->
         <div class="switchSlideBtn" @click="switchSlide = false">View</div>
         <!-- ^^ for viewing screensaver on homepage -->
         <router-link to="/createpost" class="right">Create Post</router-link>
       </div>
- <router-view v-show="switchSlide"></router-view>
-<!-- switches the navbar and background image off -->
-<div class="footer">
-      <a href="#">Copyright - Happy Kiwi 2022 </a>
-      <a href="https://zip.org.nz/" target="_blank">Zero Invasive Predators</a>
-      <a href="https://www.doc.govt.nz/" target="_blank">Department of Conservation</a>
+      
     </div>
-  </div>
-  
-  <div class="SlideWrapper"  v-show="!switchSlide">
-    <transition-group name="fade" tag="div">
-      <div v-for="i in [currentIndex]" :key="i">
-         <div class="imgWrapper">
-            
-            <a class="closeBtn" href="/" v-show="!switchSlide"> <p>x</p> </a>
+      <router-view v-show="switchSlide"></router-view>
+      <!-- switches the navbar and background image off -->
 
-            <img class="slideShowImg" :src="currentImg" />
-         </div>
+      <div class="SlideWrapper"  v-show="!switchSlide">
+        <transition-group name="fade" tag="div">
+          <div v-for="i in [currentIndex]" :key="i">
+            <div class="imgWrapper">
+                
+                <a class="closeBtn" href="/" v-show="!switchSlide"> <p>x</p> </a>
+
+                <img class="slideShowImg" :src="currentImg" />
+            </div>
+          </div>
+        </transition-group>
       </div>
-    </transition-group>
+      <!-- imagewrapper for slideshow -->
+
+    <div class="footer" v-show="switchSlide">
+          <a href="#">Copyright - Happy Kiwi 2022 </a>
+          <a href="https://zip.org.nz/" target="_blank">Zero Invasive Predators</a>
+          <a href="https://www.doc.govt.nz/" target="_blank">Department of Conservation</a>
+        </div>
+  
+
   </div>
-  <!-- imagewrapper for slideshow -->
-</div>
 </template>
 
 <script>
@@ -162,7 +165,7 @@ export default {
     z-index: 1000;
    }
 
-.appContainer{
+   .appContainer{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -208,5 +211,4 @@ export default {
   text-align: center;
   padding-right: 50px;
 }
-
 </style>
