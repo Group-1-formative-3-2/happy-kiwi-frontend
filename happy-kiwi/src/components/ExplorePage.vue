@@ -1,6 +1,6 @@
 <template>
     <div class='ExploreWrapper createPostContainer'>
-      
+      <!-- EDIT VIEW -->
         <div class='boxWrapper' v-show='!postSwitch'>
           <div class='post'>
             <div><h2 class='head centerContainer'>Edit Post</h2></div>
@@ -14,14 +14,14 @@
             <input class='createBox' type='text' v-model='formValues.imgLink'><br>
             <label class='title' for='Description'>description:</label>
             <input class='desBox' type='text' v-model='formValues.description'><br>
-            <div class='buttonBox centerContainer'>
+            <div class='buttonBox'>
               <button @click='postSwitch = true'>Cancel</button>
-              <button @click='updateDoc'>Update Document</button>
               <button @click='deleteDoc(id)'>Delete Document</button>
+              <button @click='updateDoc'>Update Document</button>
             </div>
           </div>
         </div>
-      
+      <!-- POST VIEW -->
       <div class='postDisplay' v-show='postSwitch'>
         <ul class='postContainer'>
           <li v-for='post in posts' :key='post' >
@@ -166,6 +166,11 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
   display: flex;
   justify-content: space-between;
   gap: 20px;
+ }
+
+ .buttonBox{
+  display: flex;
+  justify-content: space-around;
  }
 
 
