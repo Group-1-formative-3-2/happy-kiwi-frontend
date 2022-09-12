@@ -30,7 +30,7 @@
         </div>
 
         <div>
-          <router-link to="/signUp">sign up</router-link>
+          <router-link to="/signup">sign up</router-link>
           <span>forgot password</span>
         </div>
 
@@ -96,19 +96,34 @@ export default {
 
 <style scoped>
 .container {
+  background-color:rgba(44, 44, 44, 0.33);
   display: flex;
-  background: #2c2c2c;
-  opacity: 0.3;
+  justify-content: center;
+  backdrop-filter: blur(27px);
+  overflow-y: scroll;
+  color: white;
 }
-
-.form-group {
-  display: grid;
-  gap: 0.5rem;
-  align-items: center;
+.form-title{
+  font-size: var(--title-size);
+  /* font-size: 25px; */
 }
 
 input,
 button {
   padding: 0.5rem 0.75rem;
 }
+
+@media screen and (max-width: 1600px){
+  .postContainer{
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+ }
+ @media screen and (max-width: 900px){
+  .postContainer{
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+ }
+
 </style>
