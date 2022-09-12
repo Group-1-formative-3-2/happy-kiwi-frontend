@@ -154,9 +154,13 @@ button:focus-visible {
   margin-left: 58px;
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
+  padding-left: 1rem ;
+  padding-top: 1rem;
 }
 input { 
   font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 1rem ;
 }
 
 
