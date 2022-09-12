@@ -55,8 +55,6 @@ h1 {
 #app {
   width: 100vw;
   margin: 0 auto;
-
-
 }
 
 /* Create Post CSS */
@@ -94,13 +92,13 @@ h1 {
 }
 .boxWrapper{
   width: 672px;
-  height: 684px;
+  height: 65vh;
   background-color:rgba(44, 44, 44, 0.33);
   display: flex;
   justify-content: center;
   backdrop-filter: blur(27px);
   overflow-y: scroll;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 
 .centerContainer{
@@ -146,7 +144,7 @@ h1 {
 }
 .desBox {
   width: 558px;
-  height: 103px;
+  height: 90px;
   margin-left: 58px;
 }
 

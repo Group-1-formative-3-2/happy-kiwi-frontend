@@ -24,8 +24,6 @@
 <script>
     import SignUpPage from './SignUpPage.vue'
     import ExplorePage from './ExplorePage.vue'
-
-
     export default {
     name: "HomePage", 
     component: {
@@ -56,67 +54,58 @@
   min-width: 50%;
   min-height: 50%;
 }
-
-    body {
-        background-image: url(../assets/homepage.jpg);
-
-
-    }
-
-    .homePage {
-        text-align: right;
-        
-    }
+body {
+    background-image: url(../assets/homepage.jpg);
+}
+.homePage {
+    text-align: right;
     
-    h1 {
-        text-align: right;
-        padding-right: 150px;
-        font-size: 75px;
-        font-weight: 900;
-    }
-
-    h3{
-        padding-right: 150px;
-        text-align: right;
-        font-size: 30px;
-        font-weight: 700;
-        line-height: 40px;
-    }
-
-    .buttons { 
-        margin-right: 150px;
-    }
-    .exploreBtn  {
-        border: 1px solid transparent;
-        padding: 0.6em 1.2em;
-        font-weight: 900;
-        font-size: larger;
-        font-family:  'Ubuntu', sans-serif;
-        background-color: #006E87;
-        transition: border-color 0.25s;
-        margin: 20px;
-        text-align: right;
-    }
-
-    .signUpBtn  {
-        border: 1px solid transparent;
-        padding: 0.6em 1.2em;
-        font-weight: 900;
-        font-size: larger;
-        font-family:  'Ubuntu', sans-serif;
-        background-color: #F0742F;
-        transition: border-color 0.25s;
-        margin: 20px;
-        text-align: right;
-    }
-    button:hover {
-        border-color: white;
-    }
-    button:focus,
-
-    button:focus-visible {
-        outline: 4px auto -webkit-focus-ring-color;
-    }
+}  
+h1 {
+    text-align: right;
+    padding-right: 150px;
+    font-size: 75px;
+    font-weight: 900;
+}
+h3{
+    padding-right: 150px;
+    text-align: right;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+}
+.buttons { 
+    margin-right: 150px;
+}
+.exploreBtn  {
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family:  'Ubuntu', sans-serif;
+    background-color: #006E87;
+    transition: border-color 0.25s;
+    margin: 20px;
+    text-align: right;
+}
+.signUpBtn  {
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family:  'Ubuntu', sans-serif;
+    background-color: #F0742F;
+    transition: border-color 0.25s;
+    margin: 20px;
+    text-align: right;
+}
+button:hover {
+    border-color: white;
+}
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
 
 </style>
 

@@ -48,68 +48,44 @@ export default {
   justify-content: space-between;
   height: 100vh;
 }
-    router-view {
-    width: 100vw;
-    height: 100vh;
-    background-image: url(../assets/Explore_Page.jpg);
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    gap: 30px;
-    background-color: rgba(44, 44, 44, 0.33);
-    backdrop-filter: blur(27px) ;
-    color: white;
-
-  }
-
-  .logoImg{ 
-    height: 80px;
-    margin-top: 20px;
-    margin-left: 50px;
-    margin-bottom: 20px;
-    
-  
-  }
-
-  .router_links{
-    display: flex;
-    gap: 80px;
-    font-size: 1.5em;
-  }
-
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 30px;
+  background-color: rgba(44, 44, 44, 0.33);
+  backdrop-filter: blur(27px) ;
+  color: white;
+}
+.logoImg{ 
+  height: 80px;
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+.router_links{
+  display: flex;
+  gap: 80px;
+  font-size: 1.5em;
+}
 .header a{
   color: white;
   font-family:  'Ubuntu', sans-serif;
 }
-
-  .header a:active {
-    text-decoration: underline;
-  }
-
-  .right {
-    float: right;
-  }
-
-  .footer {
-    background-color: #7DA057;
-    height: 25px;
-    padding: 15px;
-
-    
-  }
-
-  .footer a {
-    text-decoration: underline;
-    text-align: center;
-    padding-right: 50px;
-   
-  }
-
-  router-view {
-    background-image: url(../src/assets/Home_Page.jpg);
-    width: 100vw;
-    height: 100vh;
-  } 
+.header a:active {
+  text-decoration: underline;
+}
+.right {
+  float: right;
+}
+.footer {
+  background-color: #7DA057;
+  height: 25px;
+  padding: 15px;
+}
+.footer a {
+  text-decoration: underline;
+  text-align: center;
+  padding-right: 50px;
+}
 </style>

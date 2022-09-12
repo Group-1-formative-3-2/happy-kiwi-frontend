@@ -26,7 +26,7 @@
         <ul class='postContainer'>
           <li v-for='post in posts' :key='post' >
             <div class='postImage'>
-              <img :src='post.imgLink' alt=''/>
+              <img :src='post.imgLink' alt='' class="postImg"/>
             </div>
             <div class='postContent'>
               <h2>{{post.animalName}}</h2>
@@ -150,11 +150,10 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
 
  }
 
- img{
+ .postImg{
     width: 100%;
     height: 400px;
     object-fit: cover;
-  
  }
  .postContainer{
   display: grid;
