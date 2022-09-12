@@ -110,6 +110,7 @@ button:focus-visible {
   backdrop-filter: blur(27px);
   overflow-y: scroll;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 .post{
   width: 700px;
