@@ -26,7 +26,7 @@ a:hover {
 
 a {
   font-weight: 500;
-  color: #fff;
+  color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
@@ -36,9 +36,9 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  /* place-items: center; */
-  /* min-width: 320px;
-  min-height: 100vh; */
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 h1 {
@@ -69,18 +69,17 @@ button:focus-visible {
 }
 
 #app {
-  width: 100vw;
+  max-width: 1280px;
   margin: 0 auto;
-
-
+  padding: 2rem;
+  text-align: center;
 }
 
-/* Create Post CSS */
+/* Create Post Page CSS */
 
 .back {
   width: 60%;
   height: 60%;
-  position: absolute;
   z-index: 0;
 }
 #bg {
@@ -153,7 +152,13 @@ button:focus-visible {
   width: 558px;
   height: 103px;
   margin-left: 58px;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
 }
+input { 
+  font-size: 15px;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -163,17 +168,9 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  .commentBtn{
-    background-color: #5A6949;
-    color: white;
-  }
-  .editBtn{
-    background-color: #70855A;
-    color: white;
-  }
-  /* button {
+  button {
     background-color: #f9f9f9;
-  } */
+  }
 }
 @media screen and (max-width: 700px) {
   .boxWrapper{

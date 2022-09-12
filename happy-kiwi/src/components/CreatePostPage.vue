@@ -14,7 +14,7 @@
                 <label class='title' for='Image Url'>image URL:</label>
                 <input class='createBox' type='text' v-model="formValues.imgLink"><br>
                 <label class='title' for='Description'>description:</label>
-                <input class='desBox' type='text' v-model="formValues.description"><br>
+                <textarea class='desBox' rows='4' cols='50' type='text' v-model="formValues.description"></textarea><br>
                 <div>
                     <button class='postBtn' @click="createPost">Post</button>
                 </div>
@@ -58,7 +58,7 @@
                 .then((response) => response.text())
                 .then((data) => {
                 console.log(data)
-                this.$router.push('/')
+                this.$router.push('/explore')
                 })
                 .catch((err) => {
                 if (err) throw err;
