@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="appContainer">
     <div class="header" v-show="switchSlide">
       <a href="/"><img src="./assets/Happy Kiwi Logo-01.png" alt=""></a>
       <div class="router_links">
@@ -10,10 +10,15 @@
         <!-- <router-link to="/slideshow"  style="color: #000;">View</router-link> -->
         <div class="switchSlideBtn" @click="switchSlide = false">View</div>
         <!-- ^^ for viewing screensaver on homepage -->
+        <router-link to="/createpost" class="right">Create Post</router-link>
       </div>
- </div>
  <router-view v-show="switchSlide"></router-view>
 <!-- switches the navbar and background image off -->
+<div class="footer">
+      <a href="#">Copyright - Happy Kiwi 2022 </a>
+      <a href="https://zip.org.nz/" target="_blank">Zero Invasive Predators</a>
+      <a href="https://www.doc.govt.nz/" target="_blank">Department of Conservation</a>
+    </div>
   </div>
   
   <div class="SlideWrapper"  v-show="!switchSlide">
@@ -29,14 +34,15 @@
     </transition-group>
   </div>
   <!-- imagewrapper for slideshow -->
+</div>
 </template>
 
 <script>
 import Home from './components/HomePage.vue'
 import ExplorePage from './components/ExplorePage.vue'
 import LoginPage from './components/LoginPage.vue'
-import SlideShowPage from './components/SlideShowPage.vue'
 import SignUpPage from './components/SignUpPage.vue'
+import CreatePostPage from './components/CreatePostPage.vue'
 
 export default {
  name: "NavBar", 
@@ -44,6 +50,7 @@ export default {
    Home, 
    ExplorePage, 
    LoginPage, 
+   CreatePostPage,
    SignUpPage
  }, 
 //  slideshow images and code below.
@@ -103,28 +110,6 @@ export default {
 </script>
 
 <style scoped>
-  router-view{
-      width: 100vw;
-      height: 100vh;
-      background-image: url(../assets/Explore_Page.jpg);
-   }
-  .header{
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    gap: 30px;
-
-  }
-
-  img{
-    height: 80px;
-  }
-
-  .router_links{
-    display: flex;
-    gap: 20px;
-    font-size: 1.5em;
-  }
 
   .fade-enter-active,
    .fade-leave-active {
@@ -166,9 +151,6 @@ export default {
 
    }
 
-   
-   
-
    .closeBtn{
     background-color: transparent;
     font-weight: 700;
@@ -179,4 +161,52 @@ export default {
    .SlideWrapper{
     z-index: 1000;
    }
+
+.appContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 30px;
+  background-color: rgba(44, 44, 44, 0.33);
+  backdrop-filter: blur(27px) ;
+  color: white;
+}
+.logoImg{ 
+  height: 80px;
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+.router_links{
+  display: flex;
+  gap: 80px;
+  font-size: 1.5em;
+}
+.header a{
+  color: white;
+  font-family:  'Ubuntu', sans-serif;
+}
+.header a:active {
+  text-decoration: underline;
+}
+.right {
+  float: right;
+}
+.footer {
+  background-color: #7DA057;
+  height: 25px;
+  padding: 15px;
+}
+.footer a {
+  text-decoration: underline;
+  text-align: center;
+  padding-right: 50px;
+}
+
 </style>
