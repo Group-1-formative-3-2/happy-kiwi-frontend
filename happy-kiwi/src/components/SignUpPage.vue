@@ -6,7 +6,7 @@
       <div>Sign Up</div>
       <form>
         <div class="form-group">
-          <label for="inputUsername">Username:</label><br />
+          <label for="inputUsername">Username:</label>
           <input
             type="username"
             class=""
@@ -14,45 +14,39 @@
             placeholder="Username"
           />
         </div>
-        
+
         <div class="form-group">
           <label for="inputEmail1">email:</label>
           <input
             pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}"
-            v-model="formValue.email"
             id="email"
-            required
-            type="email"
             class=""
             placeholder="enter a valid email address"
           />
         </div>
 
         <div class="form-group">
-          <label for="InputPassword1">Password:</label><br />
+          <label for="InputPassword1">Password:</label>
           <input
             pattern="[a-zA-Z0-9]{8,}"
-            v-model="formValue.password"
             id="password"
-            required
-            type="password"
             class=""
             placeholder="at least 8 characters"
           />
         </div>
 
         <div class="form-group">
-          <label for="InputPassword1">Password:</label><br />
+          <label for="InputPassword1">Password:</label>
           <input
             type="password"
             class=""
             id="InputPassword"
-            placeholder="Password"
+            placeholder="confirm password"
           />
         </div>
 
         <div class="form-group">
-          <label for="region">region:</label><br />
+          <label for="region">region:</label>
           <select name="region" id="">
             <option value="Auckland">Auckland</option>
             <option value="Wellington">Wellington</option>
@@ -95,48 +89,46 @@ export default {
           this.formValues.password === this.verify || "Password must match";
       },
     },
+    // method: {
+    //   register() {
+    //     let validform = this.$refs.registerForm.validate();
+    //     if (validform) {
+    //       // check email from database
+    //       this.users.forEach((element) => {
+    //         if (element.email == this.formValues.email) {
+    //           this.isEmailError = true;
+    //         }
+    //       });
 
-    register() {
-      let validform = this.$refs.registerForm.validate();
-      if (validform) {
-        // check email from database
-        this.users.forEach((element) => {
-          if (element.email == this.formValues.email) {
-            this.isEmailError = true;
-          }
-        });
-
-        if (!this.isEmailError) {
-          fetch(apiUsers, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(this.formValues),
-          })
-            .then((response) => response.text())
-            .then((data) => {
-              console.log(data);
-              this.dialog = false;
-              this.loggedUser =
-                this.formValues.firstname + " " + this.formValues.lastname;
-              // localStorage
-              localStorage.userId = data; // inserted document id
-              localStorage.loggedUser = this.loggedUser;
-              this.$emit("logged-user", this.loggedUser);
-              document.location.reload(true); // force page reload to show admin table
-            })
-            .catch((err) => {
-              if (err) throw err;
-            });
-        }
-      }
-    },
+    //       if (!this.isEmailError) {
+    //         fetch(apiUsers, {
+    //           method: "POST",
+    //           headers: { "Content-Type": "application/json" },
+    //           body: JSON.stringify(this.formValues),
+    //         })
+    //           .then((response) => response.text())
+    //           .then((data) => {
+    //             console.log(data);
+    //             this.dialog = false;
+    //             this.loggedUser =
+    //               this.formValues.firstname + " " + this.formValues.lastname;
+    //             // localStorage
+    //             localStorage.userId = data; // inserted document id
+    //             localStorage.loggedUser = this.loggedUser;
+    //             this.$emit("logged-user", this.loggedUser);
+    //             document.location.reload(true); // force page reload to show admin table
+    //           })
+    //           .catch((err) => {
+    //             if (err) throw err;
+    //           });
+    //       }
+    //     }
+    //   },
+    // },
   }),
 };
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: row;
-}
+
 </style>
