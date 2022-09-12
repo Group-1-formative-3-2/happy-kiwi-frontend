@@ -1,17 +1,34 @@
 
 <template>
   <div>
-    <div class="header">
+    <div class="header" v-show="switchSlide">
       <a href="/"><img src="./assets/Happy Kiwi Logo-01.png" alt=""></a>
       <div class="router_links">
         <router-link to="/"  style="color: #000;">Home</router-link>
         <router-link to="/explore"  style="color: #000;">Explore</router-link>
         <router-link to="/login"  style="color: #000;">Login</router-link>
-        <router-link to="/slideshow"  style="color: #000;">View</router-link>
+        <!-- <router-link to="/slideshow"  style="color: #000;">View</router-link> -->
+        <div class="switchSlideBtn" @click="switchSlide = false">View</div>
+        <!-- ^^ for viewing screensaver on homepage -->
       </div>
  </div>
- <router-view></router-view>
+ <router-view v-show="switchSlide"></router-view>
+<!-- switches the navbar and background image off -->
   </div>
+  
+  <div class="SlideWrapper"  v-show="!switchSlide">
+    <transition-group name="fade" tag="div">
+      <div v-for="i in [currentIndex]" :key="i">
+         <div class="imgWrapper">
+            
+            <a class="closeBtn" href="/" v-show="!switchSlide"> <p>x</p> </a>
+
+            <img class="slideShowImg" :src="currentImg" />
+         </div>
+      </div>
+    </transition-group>
+  </div>
+  <!-- imagewrapper for slideshow -->
 </template>
 
 <script>
@@ -27,13 +44,65 @@ export default {
    Home, 
    ExplorePage, 
    LoginPage, 
-   SlideShowPage, 
    SignUpPage
- }
-}
+ }, 
+//  slideshow images and code below.
+ data() {
+  return {
+    images: [
+      "https://i.ibb.co/YpssfNw/cameron-witney-Y3-Ohm-Jb-Z-yw-unsplash.jpg",
+      "https://i.ibb.co/qk4F49C/phil-botha-t-INX9-IIet-IQ-unsplash.jpg",
+      "https://i.ibb.co/K2xVgSp/ray-aucott-x-B0e8b-DV4ww-unsplash.jpg",
+      "https://i.ibb.co/PFFGgq1/luca-calderone-j-Vo0v-um-Ak4-unsplash.jpg",
+      "https://i.ibb.co/mB4rFZL/cameron-witney-Zx-UFn-Ed-FZ8c-unsplash.jpg",
+      "https://i.ibb.co/8xC0Kq8/james-bremer-Zz-N6e-BTb-4-unsplash.jpg",
+      "https://i.ibb.co/MN79nsJ/kerin-gedge-9gga-Ad3e-Mx-Q-unsplash.jpg",
+      "https://i.ibb.co/s67xrM8/advocator-sy-5-AVd-POR5c-BI-unsplash.jpg",
+      "https://i.ibb.co/CQm16bj/andrea-lightfoot-Cg-Zlqo-Pz9hw-unsplash.jpg",
+      "https://i.ibb.co/HG3WGP1/jen-milius-d-NAj-Kf-Bm8q0-unsplash.jpg",
+      "https://i.ibb.co/MPDZDKY/sandy-millar-wv-C1va-Ip-LHM-unsplash.jpg",
+      "https://i.ibb.co/qNYMyNm/pablo-heimplatz-PSF2-Rh-UBORs-unsplash.jpg",
+      "https://i.ibb.co/yVNV4Yn/aneta-foubikova-a-Pk-P4t-KZRPg-unsplash.jpg",
+      "https://i.ibb.co/pP1CSHD/cameron-witney-r-Ta-TKy-E3-Sb-A-unsplash.jpg",
+      "https://i.ibb.co/RvVpRqW/advocator-sy-TG-w-UUm-E8ew-unsplash.jpg",
+      "https://i.ibb.co/gdZ4TmZ/christine-ellsay-9-Ep-Hbo02-VXY-unsplash.jpg",
+      "https://i.ibb.co/TWRF9hR/andrea-lightfoot-LFRme4yih-H0-unsplash.jpg",
+      "https://i.ibb.co/k4S380r/joshua-harris-MNp-J8pyz-Zjk-unsplash.jpg",
+      "https://i.ibb.co/qkm8S6T/mai-moeslund-2l-AWK0-An-Vog-unsplash.jpg",
+      "https://i.ibb.co/Zmwtyyy/martina-vitakova-Zc-Ozv-Abu9-Y8-unsplash.jpg", 
+      "https://i.ibb.co/vmQ8B7Y/andrea-lightfoot-y-E8qo-Oy-AFv-M-unsplash.jpg"
+    ],
+    timer: null,
+    currentIndex: 0, 
+    switchSlide: true
+  }
+ }, mounted: function() {
+       this.startSlide();
+     },
+   
+     methods: {
+       startSlide: function() {
+         this.timer = setInterval(this.next, 4000);
+       },
+   
+       next: function() {
+         this.currentIndex += 1;
+       },
+       prev: function() {
+         this.currentIndex -= 1;
+       }
+     },
+   
+     computed: {
+       currentImg: function() {
+         return this.images[Math.abs(this.currentIndex) % this.images.length];
+       }
+     }
+   };
+
 </script>
 
-<style>
+<style scoped>
   router-view{
       width: 100vw;
       height: 100vh;
@@ -57,7 +126,57 @@ export default {
     font-size: 1.5em;
   }
 
-  .header{
-      display: none;
+  .fade-enter-active,
+   .fade-leave-active {
+      transition: opacity 3s ease-in-out;
+   }
+
+   .fade-enter-from,
+   .fade-leave-to {
+      opacity: 0;
+
+   }
+
+   .slideShowImg{
+      height: 100vh;
+      width: 100vw;
+      object-fit: cover;
+      position: absolute;
+      
+      z-index: 1;
+
+   }
+
+   .switchSlideBtn{
+    color: #000;
+    font-weight: 500;
+   }
+   .closeBtn{
+    position:absolute;
+    z-index: 1000;
+    top: 10px;
+    right: 35px;
+    
+   }
+
+   .closeBtn p{
+    size: 2em;
+    color: white;
+    font-weight: 700;
+
+   }
+
+   
+   
+
+   .closeBtn{
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: #000;
+
+   }
+   .SlideWrapper{
+    z-index: 1000;
    }
 </style>

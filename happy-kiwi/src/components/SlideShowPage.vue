@@ -1,16 +1,17 @@
 <template>
-   <div>
+   <div class="SlideWrapper">
     <transition-group name="fade" tag="div">
       <div v-for="i in [currentIndex]" :key="i">
          <div class="imgWrapper">
-            <button>x</button>
+            
+            <a href="/" class="closeBtn">x</a>
+
+            
             <img class="slideShowImg" :src="currentImg" />
          </div>
       </div>
     </transition-group>
-    <!-- <a class="prev" @click="prev" href="#">&#10094;</a>
-    <a class="next" @click="next" href="#">&#10095;</a> -->
-</div>
+  </div>
  </template>
  <script>
    export default {
@@ -79,6 +80,7 @@
    .fade-enter-from,
    .fade-leave-to {
       opacity: 0;
+      display: none;
    }
 
    .slideShowImg{
@@ -101,4 +103,12 @@
       display: none;
    }
 
+   .closeBtn{
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 1.5em;
+
+   }
+
+   
 </style>
