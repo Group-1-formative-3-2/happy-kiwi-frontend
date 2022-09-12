@@ -30,7 +30,7 @@
         </div>
 
         <div>
-          <router-link to="/register">sign up</router-link>
+          <router-link to="/signUp">sign up</router-link>
           <span>forgot password</span>
         </div>
 
