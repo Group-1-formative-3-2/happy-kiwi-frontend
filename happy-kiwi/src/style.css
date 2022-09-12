@@ -83,6 +83,12 @@ button:focus-visible {
   position: absolute;
   z-index: 0;
 }
+
+.createPostContainer{
+  display: flex;
+  justify-content: center;
+}
+
 #bg {
   position: fixed;
   z-index: -2; 
@@ -111,6 +117,11 @@ button:focus-visible {
   backdrop-filter: blur(27px);
   overflow-y: scroll;
   margin-top: 50px;
+}
+
+.centerContainer{
+  display: flex;
+  justify-content: center;
 }
 .post{
   width: 700px;

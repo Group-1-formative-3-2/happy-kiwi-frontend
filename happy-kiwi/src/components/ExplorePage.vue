@@ -1,9 +1,9 @@
 <template>
-    <div class='ExploreWrapper'>
+    <div class='ExploreWrapper createPostContainer'>
       
         <div class='boxWrapper' v-show='!postSwitch'>
           <div class='post'>
-            <div><h2 class='head'>Edit Post</h2></div>
+            <div><h2 class='head centerContainer'>Edit Post</h2></div>
             <label class='title' for='Post ID'>Post ID:</label>
             <input class='createBox' type='title' v-model.trim='id' disabled placeholder='Post ID'><br>
             <label class='title' for='Animal Name'>animal Name:</label>
@@ -14,7 +14,7 @@
             <input class='createBox' type='text' v-model='formValues.imgLink'><br>
             <label class='title' for='Description'>description:</label>
             <input class='desBox' type='text' v-model='formValues.description'><br>
-            <div class='buttonBox'>
+            <div class='buttonBox centerContainer'>
               <button @click='postSwitch = true'>Cancel</button>
               <button @click='updateDoc'>Update Document</button>
               <button @click='deleteDoc(id)'>Delete Document</button>

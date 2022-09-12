@@ -1,12 +1,12 @@
 <template>
 
-    <div>
+    <div class="createPostContainer">
         <div id='bg'>
             <img class='back' src='../assets/Create_Post_Page.jpg' alt=''>
         </div>
         <div class='boxWrapper'>
             <div class='post'>
-                <div><h2 class='head'>Create Post</h2></div>
+                <div><h2 class='head centerContainer'>Create Post</h2></div>
                 <label class='title' for='Animal Name'>animal Name:</label>
                 <input class='createBox' type='text' v-model="formValues.animalName"><br>
                 <label class='title' for='Location'>location:</label>
@@ -15,7 +15,7 @@
                 <input class='createBox' type='text' v-model="formValues.imgLink"><br>
                 <label class='title' for='Description'>description:</label>
                 <input class='desBox' type='text' v-model="formValues.description"><br>
-                <div>
+                <div class="centerContainer">
                     <button class='postBtn' @click="createPost">Post</button>
                 </div>
             </div>
