@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-   <a href="/"><img src="./assets/official_logo.png" alt=""></a>
+   <a href="/"><img class="logoImg" src="./assets/official_logo.png" alt=""></a>
    <div class="router_links">
      <router-link to="/">Home</router-link>
      <router-link to="/explore">Explore</router-link> 
@@ -57,7 +57,7 @@ export default {
 
   }
 
-  img{ 
+  .logoImg{ 
     height: 80px;
     margin-top: 20px;
     margin-left: 50px;
