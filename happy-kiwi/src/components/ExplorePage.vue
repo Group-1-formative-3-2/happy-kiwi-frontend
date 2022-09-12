@@ -154,6 +154,7 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
     width: 100%;
     height: 400px;
     object-fit: cover;
+  
  }
  .postContainer{
   display: grid;
