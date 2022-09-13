@@ -1,71 +1,59 @@
 <template>
-  <div class="signup-container">
-    <div class="left"></div>
-    <div class="middle">
-      <div>Sign Up</div>
-      <form>
-        <div class="form-group">
-          <label for="inputUsername">Username:</label>
+  <div class='createPostContainer'>
+    <div class='boxWrapper'>
+      <div class='post'>
+      <div><h2 class='head centerContainer'>Sign Up</h2></div>
+          <label for='inputUsername' class='title'>Username:</label>
           <input
-            type="username"
-            class=""
-            id="inputUsername"
-            placeholder="Username"
+            type='username'
+            class='createBox'
+            id='inputUsername'
+            placeholder='Username'
           />
-        </div>
-
-        <div class="form-group">
-          <label for="inputEmail1">email:</label>
+          <br>
+          <label for='inputEmail1' class='title'>E-mail:</label>
           <input
-            pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}"
-            id="email"
-            class=""
-            placeholder="enter a valid email address"
+            pattern='[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}'
+            id='email'
+            class='createBox'
+            placeholder='enter a valid email address'
           />
-        </div>
-
-        <div class="form-group">
-          <label for="InputPassword1">Password:</label>
+          <br>
+          <label for='InputPassword1' class='title'>Password:</label>
           <input
-            pattern="[a-zA-Z0-9]{8,}"
-            id="password"
-            class=""
-            placeholder="at least 8 characters"
+            pattern='[a-zA-Z0-9]{8,}'
+            id='password'
+            class='createBox'
+            placeholder='at least 8 characters'
           />
-        </div>
-
-        <div class="form-group">
-          <label for="InputPassword1">Password:</label>
+          <br>
+          <label for='InputPassword1' class='title'>Confirm Password:</label>
           <input
-            type="password"
-            class=""
-            id="InputPassword"
-            placeholder="confirm password"
+            type='password'
+            class='createBox'
+            id='InputPassword'
+            placeholder='confirm password'
           />
-        </div>
-
-        <div class="form-group">
-          <label for="region">region:</label>
-          <select name="region" id="">
-            <option value="Auckland">Auckland</option>
-            <option value="Wellington">Wellington</option>
-            <option value="Nelson">Nelson</option>
-            <option value="Canterbury">Canterbury</option>
-            <option value="Otago">Otago</option>
+          <br>
+          <label for='region' class='title'>Region:</label>
+          <select name='region' id='' class='createBox'>
+            <option value='Auckland'>Auckland</option>
+            <option value='Wellington'>Wellington</option>
+            <option value='Nelson'>Nelson</option>
+            <option value='Canterbury'>Canterbury</option>
+            <option value='Otago'>Otago</option>
           </select>
+          <br>
+        <div class="spaceContainer">
+          <router-link to='/login'>Sign In</router-link>
+          <span>Forgot Password</span>
         </div>
-
-        <div>
-          <router-link to="/login">sign in</router-link>
-          <span>forgot password</span>
+        <br>
+        <div class="centerContainer">
+          <button type='submit' class='postBtn'>Go</button>
         </div>
-
-        <div>
-          <button type="submit" class="btn">GO</button>
-        </div>
-      </form>
     </div>
-    <div class="right"></div>
+  </div>
   </div>
 </template>
 
@@ -73,19 +61,19 @@
 export default {
   data: () => ({
     isEmailError: false,
-    emailErrorMsg: "Email is already taken",
+    emailErrorMsg: 'Email is already taken',
     signUpFormValues: {
-      username: "",
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
+      username: '',
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
     },
 
     computed: {
       passwordMatch() {
         return () =>
-          this.formValues.password === this.verify || "Password must match";
+          this.formValues.password === this.verify || 'Password must match';
       },
     },
     // method: {
@@ -101,8 +89,8 @@ export default {
 
     //       if (!this.isEmailError) {
     //         fetch(apiUsers, {
-    //           method: "POST",
-    //           headers: { "Content-Type": "application/json" },
+    //           method: 'POST',
+    //           headers: { 'Content-Type': 'application/json' },
     //           body: JSON.stringify(this.formValues),
     //         })
     //           .then((response) => response.text())
@@ -110,11 +98,11 @@ export default {
     //             console.log(data);
     //             this.dialog = false;
     //             this.loggedUser =
-    //               this.formValues.firstname + " " + this.formValues.lastname;
+    //               this.formValues.firstname + ' ' + this.formValues.lastname;
     //             // localStorage
     //             localStorage.userId = data; // inserted document id
     //             localStorage.loggedUser = this.loggedUser;
-    //             this.$emit("logged-user", this.loggedUser);
+    //             this.$emit('logged-user', this.loggedUser);
     //             document.location.reload(true); // force page reload to show admin table
     //           })
     //           .catch((err) => {

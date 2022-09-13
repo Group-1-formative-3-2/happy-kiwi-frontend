@@ -1,58 +1,55 @@
 <template>
-  <div class="container">
-    <div class="middle">
-      <div class="form-title">Login</div>
-      <form>
-        <div class="form-group">
-          <label for="inputEmail1">email:</label>
+  <div class='createPostContainer'>
+    <div class='boxWrapper'>
+      <div class='post'>
+        <div><h2 class='head centerContainer'>Login</h2></div>
+      
+          <label for='inputEmail1' class='title'>E-mail:</label>
           <input
-            pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}"
-            v-model="formValue.email"
-            id="email"
+          class='createBox'
+            pattern='[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}'
+            v-model='formValue.email'
+            id='email'
             required
-            type="email"
-            class=""
-            placeholder="enter a valid email address"
+            type='email'
+            placeholder='enter a valid email address'
           />
-        </div>
-
-        <div class="form-group">
-          <label for="InputPassword1">password:</label>
+          <br>
+          <label for='InputPassword1' class='title'>Password:</label>
           <input
-            pattern="[a-zA-Z0-9]{8,}"
-            v-model="formValue.password"
-            id="password"
+          class='createBox'
+            pattern='[a-zA-Z0-9]{8,}'
+            v-model='formValue.password'
+            id='password'
             required
-            type="password"
-            class=""
-            placeholder="at least 8 characters"
+            type='password'
+            placeholder='at least 8 characters'
           />
+<br>
+        <div class='spaceContainer'>
+          <router-link to='/signup'>Sign Up</router-link>
+          <span>Forgot Password</span>
         </div>
-
-        <div>
-          <router-link to="/signup">sign up</router-link>
-          <span>forgot password</span>
+<br>
+        <div class='centerContainer'>
+          <button type='submit' class='postBtn'>Go</button>
         </div>
-
-        <div>
-          <button type="submit">GO</button>
-        </div>
-      </form>
+    </div>
     </div>
   </div>
 </template>
 
 <script>
-import SignUpPage from "./SignUpPage.vue";
+import SignUpPage from './SignUpPage.vue';
 const apiUsers =
-  "https://curious-parfait-81c145.netlify.app/.netlify/functions/api/";
+  'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/';
 export default {
   data: () => ({
     users: [],
-    loggedUser: "",
+    loggedUser: '',
     formValue: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   }),
 
@@ -67,7 +64,7 @@ export default {
           users.email == this.formValue.email &&
           users.password == this.formValue.password
         ) {
-          this.loggedUser = users.firstname + " " + users.lastname;
+          this.loggedUser = users.firstname + ' ' + users.lastname;
           localStorage.userId = users._id;
           localStorage.loggedUser = this.loggedUser;
         }

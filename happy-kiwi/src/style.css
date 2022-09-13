@@ -105,6 +105,12 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
+.spaceContainer{
+  display: flex;
+  justify-content: space-around;
+}
+
 .post{
   width: 700px;
   display: flex;

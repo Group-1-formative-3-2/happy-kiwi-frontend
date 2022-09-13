@@ -6,7 +6,6 @@
         <router-link to="/"  >Home</router-link>
         <router-link to="/explore"  >Explore</router-link>
         <router-link to="/login"  >Login</router-link>
-        <!-- <router-link to="/slideshow"  style="color: #000;">View</router-link> -->
         <div class="switchSlideBtn" @click="switchSlide = false">View</div>
         <!-- ^^ for viewing screensaver on homepage -->
         <router-link to="/createpost" class="right">Create Post</router-link>
