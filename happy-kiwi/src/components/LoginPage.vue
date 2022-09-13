@@ -1,7 +1,7 @@
 <template>
   <div class='createPostContainer'>
     <div class='boxWrapper'>
-      <div class='post'>
+      <form class='post'>
         <div><h2 class='head centerContainer'>Login</h2></div>
       
           <label for='inputEmail1' class='title'>E-mail:</label>
@@ -34,7 +34,7 @@
         <div class='centerContainer'>
           <button type='submit' class='postBtn'>Go</button>
         </div>
-    </div>
+      </form>
     </div>
   </div>
 </template>

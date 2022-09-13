@@ -1,7 +1,7 @@
 <template>
   <div class='createPostContainer'>
     <div class='boxWrapper'>
-      <div class='post'>
+      <form class='post'>
       <div><h2 class='head centerContainer'>Sign Up</h2></div>
           <label for='inputUsername' class='title'>Username:</label>
           <input
@@ -52,7 +52,7 @@
         <div class="centerContainer">
           <button type='submit' class='postBtn'>Go</button>
         </div>
-    </div>
+      </form>
   </div>
   </div>
 </template>
