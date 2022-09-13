@@ -9,6 +9,7 @@ import ExplorePage from './components/ExplorePage.vue'
 import LoginPage from './components/LoginPage.vue'
 import SlideShowPage from './components/SlideShowPage.vue'
 import SignUpPage from './components/SignUpPage.vue'
+import CreatePostPage from './components/CreatePostPage.vue'
 
 const router = createRouter({
    history: createWebHistory(), 
@@ -18,6 +19,7 @@ const router = createRouter({
       {path: '/login', name: 'Login', component: LoginPage}, 
       {path: '/slideshow', name: 'SlideShow', component: SlideShowPage}, 
       {path: '/signup', name: 'SignUp', component: SignUpPage},
+      {path: '/createpost', name: 'CreatePost', component: CreatePostPage},
 
    ]
 })

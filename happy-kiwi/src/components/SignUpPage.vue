@@ -1,4 +1,3 @@
-
 <template>
   <div class="signup-container">
     <div class="left"></div>
@@ -130,5 +129,11 @@ export default {
 </script>
 
 <style scoped>
+
+   .main{
+      width: 100vw;
+      height: 100vh;
+      background-image: url(../assets/Login_Page.jpg);
+   }
 
 </style>
