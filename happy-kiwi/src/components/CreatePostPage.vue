@@ -1,9 +1,9 @@
 <template>
 
     <div>
-        <div id='bg'>
-            <img class='back' src='../assets/Create_Post_Page.jpg' alt=''>
-        </div>
+        <!-- background -->
+        <div class="background"></div>
+        <!-- card wrapper & post info plus post button -->
         <div class='boxWrapper'>
             <div class='post'>
                 <div><h2 class='head'>Create Post</h2></div>
