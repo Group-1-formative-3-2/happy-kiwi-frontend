@@ -16,6 +16,7 @@
 
   --white: #fff;
   --boxBackground: rgba(44, 44, 44, 0.33);
+  --navBackground: rgba(0, 110, 135, 0.95);
   --buttonGreen: #006e87;
   --editGreen: #70855a;
   --commentGreen: #5a6949;
@@ -75,6 +76,21 @@ h1 {
 
 .card {
   padding: 2em;
+}
+
+.hamburger{
+  display: none;
+  cursor: pointer;
+}
+
+.bar{
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--white);
 }
 
 #app {
@@ -424,6 +440,52 @@ button {
 }
 
 @media screen and (max-width: 700px) {
+  .hamburger{
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2){
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .router_links{
+    position: fixed;
+    left: -100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    margin-top: 486.49px;
+    padding: 50px 0;
+    /* background-color: var(--footerGreen); */
+    background-color: var(--navBackground);
+    backdrop-filter: blur(27px);
+    color: var(--white);
+    transition: 0.5s ease-in-out;
+  }
+
+  .router_links.active{
+    left: 0;
+
+  }
+
+  .header{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 50px;
+  }
+  
+  
   .logoImg {
     height: 60px;
     margin-top: 20px;
@@ -431,12 +493,12 @@ button {
     margin-bottom: 20px;
   }
   
-  .router_links{
+  /* .router_links{
     display: flex;
     flex-direction: row;
     font-size: 1.2em;
     gap: 30px;
-  }
+  } */
 
 
   .exploreBtn{

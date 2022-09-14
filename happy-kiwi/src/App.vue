@@ -9,6 +9,13 @@
         <div class="switchSlideBtn" @click="switchSlide = false">View</div>
         <!-- ^^ for viewing screensaver on homepage -->
         <router-link to="/createpost" class="right">Create Post</router-link>
+
+        
+      </div>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
       
     </div>
@@ -30,7 +37,7 @@
       <!-- imagewrapper for slideshow -->
 
     <div class="footer" v-show="switchSlide">
-          <a href="#">&copy Copyright - Happy Kiwi 2022</a>
+          <a href="#">&copy Copyright 2022 - Happy Kiwi </a>
           <a href="https://zip.org.nz/" target="_blank">Zero Invasive Predators</a>
           <a href="https://www.doc.govt.nz/" target="_blank">Department of Conservation</a>
         </div>

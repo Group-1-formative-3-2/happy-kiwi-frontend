@@ -25,3 +25,17 @@ const router = createRouter({
 createApp(App)
    .use(router)
    .mount('#app')
+
+
+const hamburger = document.querySelector('.hamburger')
+const navMenu = document.querySelector('.router_links')
+
+hamburger.addEventListener('click', () => {
+   hamburger.classList.toggle('active')
+   navMenu.classList.toggle('active')
+})
+
+document.querySelectorAll('.router_links').forEach(n => n.addEventListener('click', ()=> {
+   hamburger.classList.remove('active')
+   navMenu.classList.remove('active')
+}))
