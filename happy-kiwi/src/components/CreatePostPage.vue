@@ -7,13 +7,13 @@
         <div class='boxWrapper'>
             <div class='post'>
                 <div><h2 class='head centerContainer'>Create Post</h2></div>
-                <label class='title' for='Animal Name'>animal Name:</label>
+                <label class='title' for='Animal Name'>Animal Name:</label>
                 <input class='createBox' type='text' v-model="formValues.animalName"><br>
-                <label class='title' for='Location'>location:</label>
+                <label class='title' for='Location'>Location:</label>
                 <input class='createBox' type='text' v-model="formValues.location"><br>
-                <label class='title' for='Image Url'>image URL:</label>
+                <label class='title' for='Image Url'>Image URL:</label>
                 <input class='createBox' type='text' v-model="formValues.imgLink"><br>
-                <label class='title' for='Description'>description:</label>
+                <label class='title' for='Description'>Description:</label>
                 <input class='desBox' type='text' v-model="formValues.description"><br>
                 <div class="centerContainer">
                     <button class='postBtn' @click="createPost">Post</button>
@@ -79,7 +79,6 @@
 </script>
 
 <!-- Google Fonts Links -->
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+<style scoped>
+        
 </style>

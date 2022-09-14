@@ -1,9 +1,9 @@
 <template>
   <div class="appContainer">
     <div class="header" v-show="switchSlide">
-      <a href="/"><img class="logoImg" src="./assets/official_logo.png" alt=""></a>
+      <a href="/"><img class="logoImg" src="./assets/official_logo.png" alt="#"></a>
       <div class="router_links">
-        <router-link to="/"  >Home</router-link>
+        <router-link to="/">Home</router-link>
         <router-link to="/explore"  >Explore</router-link>
         <router-link to="/login"  >Login</router-link>
         <div class="switchSlideBtn" @click="switchSlide = false">View</div>
@@ -30,7 +30,7 @@
       <!-- imagewrapper for slideshow -->
 
     <div class="footer" v-show="switchSlide">
-          <a href="#">Copyright - Happy Kiwi 2022 </a>
+          <a href="#">&copy Copyright - Happy Kiwi 2022</a>
           <a href="https://zip.org.nz/" target="_blank">Zero Invasive Predators</a>
           <a href="https://www.doc.govt.nz/" target="_blank">Department of Conservation</a>
         </div>
@@ -111,103 +111,8 @@ export default {
 
 </script>
 
-<style scoped>
+<style scoped >
 
-  .fade-enter-active,
-   .fade-leave-active {
-      transition: opacity 3s ease-in-out;
-   }
 
-   .fade-enter-from,
-   .fade-leave-to {
-      opacity: 0;
 
-   }
-
-   .slideShowImg{
-      height: 100vh;
-      width: 100vw;
-      object-fit: cover;
-      position: absolute;
-      
-      z-index: 1;
-
-   }
-
-   .switchSlideBtn{
-    color: #000;
-    font-weight: 500;
-   }
-   .closeBtn{
-    position:absolute;
-    z-index: 1000;
-    top: 10px;
-    right: 35px;
-    
-   }
-
-   .closeBtn p{
-    size: 2em;
-    color: white;
-    font-weight: 700;
-
-   }
-
-   .closeBtn{
-    background-color: transparent;
-    font-weight: 700;
-    font-size: 1.5em;
-    color: #000;
-
-   }
-   .SlideWrapper{
-    z-index: 1000;
-   }
-
-   .appContainer{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-}
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 30px;
-  background-color: rgba(44, 44, 44, 0.33);
-  backdrop-filter: blur(27px) ;
-  color: white;
-}
-.logoImg{ 
-  height: 80px;
-  margin-top: 20px;
-  margin-left: 50px;
-  margin-bottom: 20px;
-}
-.router_links{
-  display: flex;
-  gap: 80px;
-  font-size: 1.5em;
-}
-.header a{
-  color: white;
-  font-family:  'Ubuntu', sans-serif;
-}
-.header a:active {
-  text-decoration: underline;
-}
-.right {
-  float: right;
-}
-.footer {
-  background-color: #7DA057;
-  height: 25px;
-  padding: 15px;
-}
-.footer a {
-  text-decoration: underline;
-  text-align: center;
-  padding-right: 50px;
-}
 </style>

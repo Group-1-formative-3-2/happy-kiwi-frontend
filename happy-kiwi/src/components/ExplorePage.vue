@@ -1,5 +1,9 @@
 <template>
     <div class='ExploreWrapper createPostContainer'>
+            <div id='bg'>
+                <img class='back' src='../assets/Explore_Page.jpg' alt=''>
+            </div>
+
       <!-- EDIT VIEW -->
         <div class='boxWrapper' v-show='!postSwitch'>
           <div class='post'>
@@ -35,7 +39,7 @@
             </div>
             <div class='postButtons'>
               <button class='commentBtn'>Comment</button>
-              <button class='editBtn' ><a href='#' @click='getDoc(post._id), postSwitch = false'>Edit</a></button> 
+              <button class='editBtn' @click='getDoc(post._id), postSwitch = false'>Edit</button> 
             </div>
           </li>
         </ul>
@@ -138,63 +142,12 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
 }
 </script>
  
-<style scoped >
- ul {
-    list-style-type: none;
- }
-
- li{
-    background-color: rgba(255, 255, 255, 0.95);
-    color: black;
-    padding: 50px;
-
- }
-
- .postImg{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
- }
- .postContainer{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 50px;
-  padding: 0;
- }
-
- .postButtons{
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
- }
-
- .buttonBox{
-  display: flex;
-  justify-content: space-around;
- }
-
-
- button{
-  padding: 0.6em 3em;
- }
- .ExploreWrapper{
-  background-image: url(../assets/Explore_Page.jpg);
-  padding: 50px;
-
- }
-
- @media screen and (max-width: 1600px){
-  .postContainer{
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+<style scoped>
+  button:hover {
+    border-color: white;
   }
-
- }
- @media screen and (max-width: 900px){
-  .postContainer{
-    grid-template-columns: 1fr;
-    gap: 50px;
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
   }
-
- }
 </style> 

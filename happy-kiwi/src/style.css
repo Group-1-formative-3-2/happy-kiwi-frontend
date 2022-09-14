@@ -13,40 +13,65 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --white: #fff;
+  --boxBackground: rgba(44, 44, 44, 0.33);
+  --buttonGreen: #006e87;
+  --editGreen: #70855a;
+  --commentGreen: #5a6949;
+  --footerGreen: #7da057;
+}
+
+#bg {
+  position: fixed;
+  z-index: -2;
+  top: -40%;
+  left: -40%;
+  width: 200%;
+  height: 200%;
+}
+
+#bg img {
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+  object-fit: cover;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--white);
   text-decoration: inherit;
-}
-a:hover {
-  color: white;
 }
 
-a {
-  font-weight: 500;
-  color: #fff;
-  text-decoration: inherit;
-}
 a:hover {
-  color: white;
+  text-decoration: underline;
+  color: var(--white);
+}
+
+a:active {
+  text-decoration: underline;
+  color: var(--white);
 }
 
 body {
   margin: 0;
   display: flex;
-  /* place-items: center; */
-  /* min-width: 320px;
-  min-height: 100vh; */
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
-
 
 .card {
   padding: 2em;
@@ -55,6 +80,257 @@ h1 {
 #app {
   width: 100vw;
   margin: 0 auto;
+}
+
+/* Home Page */
+
+/* Fade in images on App page start */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 3s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slideShowImg {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: absolute;
+  z-index: 1;
+}
+
+.closeBtn {
+  position: absolute;
+  z-index: 10;
+  right: 45px;
+  padding: 30px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.closeBtn p {
+  font-size: 2em;
+  color: var(--white);
+  font-weight: 800;
+}
+
+.SlideWrapper {
+  z-index: 100;
+}
+/* Fade in images on App page end */
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 30px;
+  background-color: var(--boxBackground);
+  backdrop-filter: blur(27px);
+  color: var(--white);
+}
+
+.logoImg {
+  height: 80px;
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+.router_links {
+  display: flex;
+  gap: 80px;
+  font-size: 1.5em;
+}
+
+.router_link {
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: inherit;
+}
+.router_link:hover {
+  text-decoration: underline;
+  color: var(--white);
+}
+
+.router_link:active {
+  text-decoration: underline;
+  color: var(--white);
+}
+
+.switchSlideBtn {
+  color: var(--white);
+  font-weight: 500;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+}
+
+.switchSlideBtn:hover {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: underline;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.switchSlideBtn:active {
+  color: var(--white);
+  font-weight: 500;
+  text-decoration: underline;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.header a {
+  color: var(--white);
+  font-family: "Ubuntu", sans-serif;
+}
+
+.header a:active {
+  text-decoration: underline;
+}
+
+.footer {
+  background-color: var(--footerGreen);
+  height: 25px;
+  padding: 15px 50px;
+}
+
+.footer a {
+  text-decoration: underline;
+  text-align: center;
+  padding-right: 50px;
+}
+
+/* Explore Page */
+ul {
+  list-style-type: none;
+}
+
+li {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: black;
+  padding: 50px;
+}
+
+.postContainer {
+  display: grid;
+  margin: 30px 50px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  padding: 0;
+}
+
+.postImg {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.commentBtn {
+  background-color: var(--commentGreen);
+  color: var(--white);
+}
+.commentBtn:hover {
+  border-color: var(--white);
+}
+.commentBtn:focus,
+.commentBtn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+.editBtn {
+  background-color: var(--commentGreen);
+  color: var(--white);
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.postButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+button {
+  padding: 0.6em 1.2em;
+  font-weight: 500;
+  font-size: larger;
+  font-family: "Ubuntu", sans-serif;
+  background-color: var(--buttonGreen);
+  transition: border-color 0.25s;
+  color: var(--white);
+  /* border-style: none; */
+}
+
+
+
+/* Login Page */
+.container {
+  background-color: var(--boxBackground);
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(27px);
+  overflow-y: scroll;
+  color: var(--white);
+}
+
+
+.title {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--white);
+  text-align: left;
+  margin-left: 3rem;
+  margin-bottom: 5px;
+}
+
+input,
+button {
+  padding: 0.5rem 0.75rem;
+  border-style: none;
+}
+
+.createBox {
+  height: 57px;
+  display: block;
+  margin-left: 45px;
+  margin-right: 45px;
+}
+
+.spaceContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px 0 50px;  
+}
+
+.spaceContainer span:hover {
+  text-decoration: underline;
+}
+
+.desBox {
+  width: 558px;
+  height: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.spaceContainer span {
+  color: var(--white);
+  font-weight: 500;
 }
 
 /* Create Post CSS */
@@ -66,121 +342,112 @@ h1 {
   z-index: 0;
 }
 
-.createPostContainer{
+.createPostContainer {
   display: flex;
   justify-content: center;
 }
 
-#bg {
-  position: fixed;
-  z-index: -2; 
-  top: -40%; 
-  left: -40%; 
-  width: 200%; 
-  height: 200%;
-}
-#bg img {
-  position: absolute; 
-  z-index: -2;
-  top: 0; 
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
-  margin: auto; 
-  min-width: 50%;
-  min-height: 50%;
-}
-.boxWrapper{
+.boxWrapper {
   width: 672px;
-  height: 65vh;
-  background-color:rgba(44, 44, 44, 0.33);
+  padding: 40px 40px;
+  background-color: var(--boxBackground);
   display: flex;
   justify-content: center;
   backdrop-filter: blur(27px);
   overflow-y: scroll;
-  /* margin-top: 50px; */
 }
 
-.centerContainer{
+.centerContainer {
   display: flex;
   justify-content: center;
 }
 
-.spaceContainer{
-  display: flex;
-  justify-content: space-around;
-}
-
-.post{
+.post {
   width: 700px;
   display: flex;
   flex-direction: column;
   justify-content: left;
   align-items: left;
-  margin-top: 50px;
+
 }
+
 .postBtn {
-  background-color: #006E87;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
+  background-color: var(--buttonGreen);
+  color: var(--white);
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
   font-weight: 500;
   width: 190px;
   height: 49px;
-}
-.head {
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: 700;
-  font-size: 25px;
-  color: white;
-  margin-top: 0;
-}
-.title {
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  color: white;
-  text-align: left;
-  margin-left: 3.7rem;
-}
-.createBox {
-  width: 558px;
-  height: 57px;
-  margin-left: 58px;
-}
-.desBox {
-  width: 558px;
-  height: 90px;
-  margin-left: 58px;
+  /* border-style: none; */
+  font-weight: 500px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  .commentBtn{
-    background-color: #5A6949;
-    color: white;
-  }
-  .editBtn{
-    background-color: #70855A;
-    color: white;
-  }
-  /* button {
-    background-color: #f9f9f9;
-  } */
+.postBtn:hover {
+  border-style: solid;
+  border-color: var(--white);
 }
+.postBtn:focus,
+.postBtn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.head {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--white);
+  margin-top: 0;
+}
+
+
+@media screen and (max-width: 1500px) {
+  .router_links{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.4em;
+    gap: 40px;
+  }
+  
+  .postContainer {
+    display: grid;
+    margin: 30px 50px;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 0;
+  }
+  .postImg {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+}
+
 @media screen and (max-width: 700px) {
-  .boxWrapper{
+  .logoImg {
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .router_links{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2em;
+    gap: 30px;
+  }
+
+
+  .exploreBtn{
+    text-align: center;
+  }
+
+  .boxWrapper {
     width: 376px;
-    height: 647px;
     margin-left: 2rem;
   }
-  .post{
+  .post {
     width: 600px;
   }
   .createBox {
@@ -190,4 +457,29 @@ h1 {
   .desBox {
     width: 250px;
   }
+  .postContainer {
+    display: grid;
+    margin: 30px 50px;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 0;
+  }
+  .postImg {
+    width: 100%;
+  }
+  .footer {
+    height: 45px;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .footer a {
+    text-decoration: underline;
+    text-align: center;
+    padding-right: 0px;
+  }
+  
 }

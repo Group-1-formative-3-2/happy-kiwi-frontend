@@ -1,9 +1,13 @@
 <template>
   <div class='createPostContainer'>
+            <div id='bg'>
+                <img class='back' src='../assets/Login_Page.jpg' alt=''>
+            </div>
     <div class='boxWrapper'>
       <div class='post'>
-        <div><h2 class='head centerContainer'>Login</h2></div>
-      
+        <div>
+          <h2 class='head centerContainer'>Login</h2>
+        </div>
           <label for='inputEmail1' class='title'>E-mail:</label>
           <input
           class='createBox'
@@ -12,9 +16,9 @@
             id='email'
             required
             type='email'
-            placeholder='enter a valid email address'
+            placeholder='Enter a valid email address'
           />
-          <br>
+          <br> 
           <label for='InputPassword1' class='title'>Password:</label>
           <input
           class='createBox'
@@ -23,7 +27,7 @@
             id='password'
             required
             type='password'
-            placeholder='at least 8 characters'
+            placeholder='At least 8 characters'
           />
 <br>
         <div class='spaceContainer'>
@@ -92,35 +96,5 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  background-color:rgba(44, 44, 44, 0.33);
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(27px);
-  overflow-y: scroll;
-  color: white;
-}
-.form-title{
-  font-size: var(--title-size);
-  /* font-size: 25px; */
-}
-
-input,
-button {
-  padding: 0.5rem 0.75rem;
-}
-
-@media screen and (max-width: 1600px){
-  .postContainer{
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-  }
- }
- @media screen and (max-width: 900px){
-  .postContainer{
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
- }
 
 </style>
