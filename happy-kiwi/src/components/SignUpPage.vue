@@ -4,50 +4,49 @@
         <img class='back' src='../assets/Login_Page.jpg' alt=''>
     </div>
     <div class='boxWrapper'>
-      <div class='post'>
-        <div><h2 class='head centerContainer'>Sign Up</h2></div>
-        <label for='inputUsername' class='title'>Username:</label>
-        <input
-          type='username'
-          class='createBox'
-          id='inputUsername'
-          placeholder='Username'
-        />
-        <br>
-        <label for='inputEmail1' class='title'>E-mail:</label>
-        <input
-          pattern='[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}'
-          id='email'
-          class='createBox'
-          placeholder='enter a valid email address'
-        />
-        <br>
-        <label for='InputPassword1' class='title'>Password:</label>
-        <input
-          pattern='[a-zA-Z0-9]{8,}'
-          id='password'
-          class='createBox'
-          placeholder='at least 8 characters'
-        />
-        <br>
-        <label for='InputPassword1' class='title'>Confirm Password:</label>
-        <input
-          type='password'
-          class='createBox'
-          id='InputPassword'
-          placeholder='confirm password'
-        />
-        <br>
-        <label for='region' class='title'>Region:</label>
-        <select name='region' id='regionSelect' class='createBox'>
-          <option value='Auckland'>Auckland</option>
-          <option value='Wellington'>Wellington</option>
-          <option value='Nelson'>Nelson</option>
-          <option value='Canterbury'>Canterbury</option>
-          <option value='Otago'>Otago</option>
-        </select>
-        <br>
-
+      <form class='post'>
+      <div><h2 class='head centerContainer'>Sign Up</h2></div>
+          <label for='inputUsername' class='title'>Username:</label>
+          <input
+            type='username'
+            class='createBox'
+            id='inputUsername'
+            placeholder='Username'
+          />
+          <br>
+          <label for='inputEmail1' class='title'>E-mail:</label>
+          <input
+            pattern='[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}'
+            id='email'
+            class='createBox'
+            placeholder='enter a valid email address'
+          />
+          <br>
+          <label for='InputPassword1' class='title'>Password:</label>
+          <input
+            pattern='[a-zA-Z0-9]{8,}'
+            id='password'
+            class='createBox'
+            placeholder='at least 8 characters'
+          />
+          <br>
+          <label for='InputPassword1' class='title'>Confirm Password:</label>
+          <input
+            type='password'
+            class='createBox'
+            id='InputPassword'
+            placeholder='confirm password'
+          />
+          <br>
+          <label for='region' class='title'>Region:</label>
+          <select name='region' id='' class='createBox'>
+            <option value='Auckland'>Auckland</option>
+            <option value='Wellington'>Wellington</option>
+            <option value='Nelson'>Nelson</option>
+            <option value='Canterbury'>Canterbury</option>
+            <option value='Otago'>Otago</option>
+          </select>
+          <br>
         <div class="spaceContainer">
           <router-link to='/login'>Sign In</router-link>
           <span>Forgot Password</span>
@@ -58,8 +57,9 @@
         <div class="centerContainer">
           <button type='submit' class='postBtn'>Go</button>
         </div>
-      </div>
-    </div>
+
+      </form>
+</div>
   </div>
 </template>
 

@@ -4,10 +4,9 @@
                 <img class='back' src='../assets/Login_Page.jpg' alt=''>
             </div>
     <div class='boxWrapper'>
-      <div class='post'>
-        <div>
-          <h2 class='head centerContainer'>Login</h2>
-        </div>
+      <form class='post'>
+        <div><h2 class='head centerContainer'>Login</h2></div>
+      
           <label for='inputEmail1' class='title'>E-mail:</label>
           <input
           class='createBox'
@@ -38,7 +37,7 @@
         <div class='centerContainer'>
           <button type='submit' class='postBtn'>Go</button>
         </div>
-    </div>
+      </form>
     </div>
   </div>
 </template>
