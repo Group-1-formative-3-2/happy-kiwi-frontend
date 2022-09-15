@@ -63,6 +63,7 @@
             <option value="Canterbury">Canterbury</option>
             <option value="Otago">Otago</option>
             <option value="Southland">Southland</option>
+            <option value="chathamislands">Chatham Islands</option>
           </select>
         </div>
 
