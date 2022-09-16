@@ -1,10 +1,15 @@
 <template>
   <div class='createPostContainer'>
-            <div id='bg'>
-                <img class='back' src='../assets/Login_Page.jpg' alt=''>
-            </div>
+    <div id='bg'>
+        <img class='back' src='../assets/Login_Page.jpg' alt=''>
+    </div>
+
     <div class='boxWrapper'>
-      <form class='post'>
+      <form 
+      class='post' 
+      v-if="isLogin" 
+      v-on:submit.prevent
+      >
         <div><h2 class='head centerContainer'>Login</h2></div>
       
           <label for='inputEmail1' class='title'>E-mail:</label>
@@ -18,9 +23,10 @@
             placeholder='Enter a valid email address'
           />
           <br> 
+
           <label for='InputPassword1' class='title'>Password:</label>
           <input
-          class='createBox'
+            class='createBox'
             pattern='[a-zA-Z0-9]{8,}'
             v-model='formValue.password'
             id='password'
@@ -28,15 +34,20 @@
             type='password'
             placeholder='At least 8 characters'
           />
-<br>
-        <div class='spaceContainer'>
-          <router-link to='/signup' class="signUpLink">Sign Up</router-link>
-          <span class="passwordLink">Forgot Password</span>
+          <br>
+          
+          <div class='spaceContainer'>
+            <router-link to='/signup' class="signUpLink">Sign Up</router-link>
+            <span class="passwordLink">Forgot Password</span>
+          </div>
+          <br>
+
+
+          <div class='centerContainer'>
+          <button type='submit' class='postBtn' @click="login">Go</button>
         </div>
-<br>
-        <div class='centerContainer'>
-          <button type='submit' class='postBtn'>Go</button>
-        </div>
+
+        <div class="centerContainer">{{errorMessage}}</div>
       </form>
     </div>
   </div>
@@ -49,10 +60,12 @@ export default {
   data: () => ({
     users: [],
     loggedUser: '',
+    isLogin: true,    
     formValue: {
       email: '',
       password: '',
     },
+    errorMessage:''
   }),
 
   components: {
@@ -61,14 +74,18 @@ export default {
 
   method: {
     login() {
+      console.log("go")
       this.users.forEach((users) => {
         if (
           users.email == this.formValue.email &&
           users.password == this.formValue.password
         ) {
           this.loggedUser = users.firstname + ' ' + users.lastname;
+          this.isLogin = true;
           localStorage.userId = users._id;
           localStorage.loggedUser = this.loggedUser;
+        } else {
+          this.errorMessage = "Email and password must be match!"
         }
       });
     },
