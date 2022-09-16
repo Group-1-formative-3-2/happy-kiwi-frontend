@@ -131,7 +131,7 @@ h1 {
 .closeBtn p {
   font-size: 2em;
   color: var(--white);
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .SlideWrapper {
@@ -170,7 +170,7 @@ h1 {
 }
 
 .router_link {
-  font-weight: 500;
+  font-weight: 900;
   color: var(--white);
   text-decoration: inherit;
 }
@@ -186,21 +186,21 @@ h1 {
 
 .switchSlideBtn {
   color: var(--white);
-  font-weight: 500;
+  font-weight: 900;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
 }
 
 .switchSlideBtn:hover {
   color: #fff;
-  font-weight: 500;
+  font-weight: 900;
   text-decoration: underline;
   font-family: "Ubuntu", sans-serif;
 }
 
 .switchSlideBtn:active {
   color: var(--white);
-  font-weight: 500;
+  font-weight: 900;
   text-decoration: underline;
   font-family: "Ubuntu", sans-serif;
 }
@@ -252,8 +252,9 @@ li {
 }
 
 .commentBtn {
-  background-color: var(--commentGreen);
+  background-color: #5A6949;
   color: var(--white);
+  font-weight: 900;
 }
 .commentBtn:hover {
   border-color: var(--white);
@@ -263,8 +264,9 @@ li {
   outline: 4px auto -webkit-focus-ring-color;
 }
 .editBtn {
-  background-color: var(--commentGreen);
+  background-color: #7DA057;
   color: var(--white);
+  font-weight: 900;
 }
 
 .buttonBox {
@@ -289,7 +291,7 @@ button {
   /* border-style: none; */
 }
 
-
+.BOX
 
 /* Login Page */
 .container {
@@ -319,7 +321,7 @@ button {
 }
 
 .createBox {
-  height: 57px;
+  height: 30px;
   display: block;
   margin-left: 45px;
   margin-right: 45px;
@@ -336,7 +338,7 @@ button {
 }
 
 .desBox {
-  width: 558px;
+  width: 83%;
   height: 90px;
   display: block;
   margin-left: auto;
@@ -346,7 +348,7 @@ button {
 
 .spaceContainer span {
   color: var(--white);
-  font-weight: 500;
+  font-weight: 900;
 }
 
 /* Create Post CSS */
@@ -366,6 +368,8 @@ button {
 .boxWrapper {
   width: 672px;
   padding: 40px 40px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   background-color: var(--boxBackground);
   display: flex;
   justify-content: center;
@@ -392,12 +396,18 @@ button {
   color: var(--white);
   font-family: "Open Sans", sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 900;
   width: 190px;
   height: 49px;
   /* border-style: none; */
   font-weight: 500px;
 }
+
+.signUpLink {
+  font-weight: 900;
+}
+
+
 
 .postBtn:hover {
   border-style: solid;
@@ -414,6 +424,22 @@ button {
   font-size: 25px;
   color: var(--white);
   margin-top: 0;
+}
+
+/* edit post */
+
+.editCancel {
+  font-weight: 900;
+}
+
+.editDelete {
+  font-weight: 900;
+  background-color: #9A5353;
+}
+
+.editUpdate {
+  font-weight: 900;
+  background-color: #789A53;
 }
 
 
@@ -512,10 +538,7 @@ button {
   .post {
     width: 600px;
   }
-  .createBox {
-    width: 250px;
-    height: 40px;
-  }
+
   .desBox {
     width: 250px;
   }
