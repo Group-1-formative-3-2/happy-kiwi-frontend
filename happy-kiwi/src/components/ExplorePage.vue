@@ -25,10 +25,11 @@
             </div>
           </div>
         </div>
+
       <!-- POST VIEW -->
       <div class='postDisplay' v-show='postSwitch'>
         <ul class='postContainer'>
-          <li v-for='post in posts' :key='post' >
+          <li v-for="(post, i) in posts" :key='i' class="postList">
             <div class='postImage'>
               <img :src='post.imgLink' alt='' class="postImg"/>
             </div>
@@ -37,8 +38,39 @@
               <h3>{{post.location}}</h3>
               <p>{{ post.description }}</p>
             </div>
+
+            <!-- MESSAGE VIEW -->
+            <div v-show='!comment'>
+              <div>
+                <h4>Comments:</h4>
+                <ul class="msgListContainer">
+                  <li v-for="(postmsg, i) in postMessages[post._id]" :key="i" class="messageList">
+                    <h5>{{postmsg.user_id}}: </h5>  <p>{{postmsg.message}}</p>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5>Leave a comment:</h5>
+              </div>
+              <div>
+                <textarea
+                v-bind:value="msgFormValues.message"
+                v-on:input="msgBoxInput = $event.target.value"
+                id="messageToSeller"
+                outlined
+                label="Please type your comment"
+                @keyup.enter="sendMsgToSeller(posts.post_id)"
+                cols="40"
+                rows="5">
+              </textarea>
+              </div>
+              <div>
+                <button title="send message" @click="showDetails(post._id), sendMsgToSeller(details.post_id)">Send Message</button>
+              </div>
+            </div>
+
             <div class='postButtons'>
-              <button class='commentBtn'>Comment</button>
+              <button class='commentBtn' @click='comment = false'>Comment</button>
               <button class='editBtn' @click='getDoc(post._id), postSwitch = false'>Edit</button> 
             </div>
           </li>
@@ -49,6 +81,8 @@
   
  <script>
 const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/';
+const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/functions/api/';
+
  export default{
    name: 'ExplorePage',
    data() {
@@ -61,7 +95,22 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
          description: '',
          imgLink: ''
        },
-       postSwitch: true
+       allMessages: [],
+      msglist: [],
+      postMessages: [],
+      postsData: [],
+      msgBoxInput: "",
+      msgFormValues: {
+        user_id: "",
+        post_id: "",
+        message: "",
+      },
+      details: {
+      post_id: ""
+      },
+      msg: "",
+      postSwitch: true,
+      comment: true
      }
    },
    methods: {
@@ -78,7 +127,7 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
           })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data)
+            // console.log(data)
             this.formValues.animalName = data.animalName
             this.formValues.location = data.location
             this.formValues.description = data.description
@@ -99,7 +148,7 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
             })
             .then((response) => response.text())
             .then((data) => {
-            console.log(data)
+            // console.log(data)
             alert('Work has been Updated')
             this.getAll()
             this.clearInputs()
@@ -115,7 +164,7 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
           })
           .then((response) => response.text())
           .then((data) => {
-            console.log(data)
+            // console.log(data)
             alert('Work has been deleted')
             this.getAll()
             this.postSwitch = true
@@ -130,14 +179,81 @@ const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/'
         .then((response) => response.json())
         .then((data) => {
           this.posts = data
+          data.forEach((post) => {
+            this.postsData[post._id] = post;
+            });
         })
         .catch((err) => {
           if (err) throw err;
         })
+      },
+      showDetails(post_id) {
+      this.details.post_id = post_id;
+      this.getMessages(post_id);
+      // console.log(this.details.post_id);
+    },
+    getPostMessages(post_id) {
+        let singlePost = [];
+        this.allMessages.forEach((element) => {
+          if (element.post_id == post_id) {
+            singlePost.push(element);
+          }
+        });
+        return singlePost;
+      },
+    sendMsgToSeller(post_id) {
+      this.msgFormValues.post_id = post_id;
+      this.msgFormValues.message = this.msgBoxInput;
+      this.msgFormValues.user_id = this.formValues.user_id || "Guest";
+      // console.log(this.msgFormValues);
+      //save to message database
+      fetch(apiMessages, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.msgFormValues),
+        })
+        .then((response) => response.text())
+        .then((data) => {
+          // console.log(data);
+          this.getAllMessages(); // refresh all message list
+        })
+        .catch((err) => {
+          if (err) throw err;
+        });
+      this.msgFormValues.message = "";
+    },
+    getMessages(post_id) {
+      this.msglist = [];
+      if (post_id) {
+        let singlePost = [];
+        this.allMessages.forEach((msg) => {
+          if (msg.post_id == post_id) {
+            singlePost.push(msg);
+          }
+        });
+        this.msglist = singlePost;
       }
     },
+    getAllMessages() {
+      fetch(apiMessages)
+      .then((response) => response.json())
+      .then((data) => {
+        this.allMessages = data;
+
+        this.postMessages = this.allMessages.reduce((results, msg) => {
+          results[msg.post_id] = results[msg.post_id] || [];
+          results[msg.post_id].push(msg);
+          return results;
+        }, {});
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+    },
+    },
     mounted(){
-      this.getAll()
+      this.getAll();
+      this.getAllMessages();
     }
 }
 </script>

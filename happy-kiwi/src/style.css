@@ -229,9 +229,10 @@ h1 {
 /* Explore Page */
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
-li {
+.postList{
   background-color: rgba(255, 255, 255, 0.95);
   color: black;
   padding: 50px;
@@ -290,6 +291,26 @@ button {
   color: var(--white);
   /* border-style: none; */
 }
+
+/* Commenting styling */
+
+.msgListContainer{
+  overflow: scroll;
+  height: 85px;
+ }
+
+ .msgListContainer h5{
+  margin: 0;
+  display:inline; 
+ }
+
+ .msgListContainer p{ 
+  display:inline; 
+}
+
+ .messageList{
+ padding: 5px;
+ }
 
 .BOX
 
@@ -406,8 +427,6 @@ button {
 .signUpLink {
   font-weight: 900;
 }
-
-
 
 .postBtn:hover {
   border-style: solid;
