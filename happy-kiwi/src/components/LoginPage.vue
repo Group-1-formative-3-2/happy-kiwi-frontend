@@ -30,8 +30,8 @@
           />
 <br>
         <div class='spaceContainer'>
-          <router-link to='/signup'>Sign Up</router-link>
-          <span>Forgot Password</span>
+          <router-link to='/signup' class="signUpLink">Sign Up</router-link>
+          <span class="passwordLink">Forgot Password</span>
         </div>
 <br>
         <div class='centerContainer'>

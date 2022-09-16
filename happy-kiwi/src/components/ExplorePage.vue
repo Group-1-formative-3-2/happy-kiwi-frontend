@@ -10,18 +10,18 @@
             <div><h2 class='head centerContainer'>Edit Post</h2></div>
             <label class='title' for='Post ID'>Post ID:</label>
             <input class='createBox' type='title' v-model.trim='id' disabled placeholder='Post ID'><br>
-            <label class='title' for='Animal Name'>animal Name:</label>
+            <label class='title' for='Animal Name'>Animal Name:</label>
             <input class='createBox' type='text' v-model='formValues.animalName'><br>
-            <label class='title' for='Location'>location:</label>
+            <label class='title' for='Location'>Location:</label>
             <input class='createBox' type='text' v-model='formValues.location'><br>
-            <label class='title' for='Image Url'>image URL:</label>
+            <label class='title' for='Image Url'>Image URL:</label>
             <input class='createBox' type='text' v-model='formValues.imgLink'><br>
-            <label class='title' for='Description'>description:</label>
+            <label class='title' for='Description'>Description:</label>
             <input class='desBox' type='text' v-model='formValues.description'><br>
             <div class='buttonBox'>
-              <button @click='postSwitch = true'>Cancel</button>
-              <button @click='deleteDoc(id)'>Delete Document</button>
-              <button @click='updateDoc'>Update Document</button>
+              <button @click='postSwitch = true' class="editCancel">Cancel</button>
+              <button @click='deleteDoc(id)' class="editDelete">Delete Document</button>
+              <button @click='updateDoc' class="editUpdate">Update Document</button>
             </div>
           </div>
         </div>
