@@ -44,8 +44,7 @@
 
 <script>
 import SignUpPage from './SignUpPage.vue';
-const apiUsers =
-  'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/';
+const apiUsers ='https://api-users-login.netlify.app/.netlify/functions/api';
 export default {
   data: () => ({
     users: [],
