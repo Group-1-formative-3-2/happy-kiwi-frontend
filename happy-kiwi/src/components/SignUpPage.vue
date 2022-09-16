@@ -39,7 +39,7 @@
           />
           <br>
           <label for='region' class='title'>Region:</label>
-          <select name="region" id="">
+          <select name="region" id=""  class='createBox'>
             <option value="Northland">Northland</option>
             <option value="Auckland">Auckland</option>
             <option value="Walkato">Walkato</option>
