@@ -3,15 +3,15 @@
     <div id='bg'>
         <img class='back' src='../assets/Login_Page.jpg' alt=''>
     </div>
-
     <div class='boxWrapper'>
+   
       <form 
       class='post' 
       v-if="isLogin" 
-      v-on:submit.prevent
+      @submit.prevent = "login"
       >
         <div><h2 class='head centerContainer'>Login</h2></div>
-      
+     
           <label for='inputEmail1' class='title'>E-mail:</label>
           <input
           class='createBox'
@@ -42,11 +42,13 @@
           </div>
           <br>
 
+        
 
           <div class='centerContainer'>
-          <button type='submit' class='postBtn' @click="login">Go</button>
+            <!-- <button type='submit' class='postBtn'>Go</button> -->
+          <input type='submit' class='postBtn' value="Go"/>
         </div>
-
+        <br>
         <div class="centerContainer">{{errorMessage}}</div>
       </form>
     </div>
@@ -57,7 +59,8 @@
 import SignUpPage from './SignUpPage.vue';
 const apiUsers ='https://api-users-login.netlify.app/.netlify/functions/api';
 export default {
-  data: () => ({
+  data() {
+    return {
     users: [],
     loggedUser: '',
     isLogin: true,    
@@ -66,13 +69,15 @@ export default {
       password: '',
     },
     errorMessage:''
-  }),
+  }
+},
 
   components: {
     SignUpPage,
   },
 
-  method: {
+  methods: { 
+
     login() {
       console.log("go")
       this.users.forEach((users) => {
@@ -94,7 +99,7 @@ export default {
   mounted() {
     // check if user is logged-in, do not show login form
     if (localStorage.loggedUser) {
-      this.user = false;
+      this.user = false;s
     }
 
     // get all users
