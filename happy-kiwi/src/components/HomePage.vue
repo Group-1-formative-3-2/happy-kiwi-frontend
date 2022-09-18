@@ -58,6 +58,11 @@ h3 {
 }
 .buttons {
   margin-right: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 20px;
+
 }
 .exploreBtn {
   border: 1px solid transparent;
@@ -67,7 +72,6 @@ h3 {
   font-family: "Ubuntu", sans-serif;
   background-color: #006e87;
   transition: border-color 0.25s;
-  margin: 20px;
   text-align: right;
 }
 .signUpBtn {
@@ -78,7 +82,6 @@ h3 {
   font-family: "Ubuntu", sans-serif;
   background-color: #f0742f;
   transition: border-color 0.25s;
-  margin: 20px;
   text-align: right;
 }
 
