@@ -19,9 +19,9 @@
             <label class='title' for='Description'>Description:</label>
             <input class='desBox' type='text' v-model='formValues.description'><br>
             <div class='buttonBox'>
-              <button @click='postSwitch = true' class="editCancel">Cancel</button>
-              <button @click='deleteDoc(id)' class="editDelete">Delete Document</button>
-              <button @click='updateDoc' class="editUpdate">Update Document</button>
+              <button @click='postSwitch = true' class='editCancel'>Cancel</button>
+              <button @click='deleteDoc(id)' class='editDelete'>Delete Document</button>
+              <button @click='updateDoc' class='editUpdate'>Update Document</button>
             </div>
           </div>
         </div>
@@ -29,9 +29,9 @@
       <!-- POST VIEW -->
       <div class='postDisplay' v-show='postSwitch'>
         <ul class='postContainer'>
-          <li v-for="(post, i) in posts" :key='i' class="postList">
+          <li v-for='(post, i) in posts' :key='i' class='postList'>
             <div class='postImage'>
-              <img :src='post.imgLink' alt='' class="postImg"/>
+              <img :src='post.imgLink' alt='' class='postImg'/>
             </div>
             <div class='postContent'>
               <h2>{{post.animalName}}</h2>
@@ -43,8 +43,8 @@
             <div v-show='!commentToggle'>
               <div>
                 <h4>Comments:</h4>
-                <ul class="commentListContainer">
-                  <li v-for="(postCom, i) in postedComments[post._id]" :key="i" class="commentList">
+                <ul class='commentListContainer'>
+                  <li v-for='(postCom, i) in postedComments[post._id]' :key='i' class='commentList'>
                     <h5>{{postCom.user_id}}: </h5>  <p>{{postCom.message}}</p>
                   </li>
                 </ul>
@@ -54,17 +54,17 @@
               </div>
               <div>
                 <textarea
-                v-bind:value="commentFormValues.message"
-                v-on:input="commentBoxInput = $event.target.value"
+                v-bind:value='commentFormValues.message'
+                v-on:input='commentBoxInput = $event.target.value'
                 outlined
-                label="Please type your comment"
-                @keyup.enter="postComment(posts.post_id)"
-                cols="40"
-                rows="5">
+                label='Please type your comment'
+                @keyup.enter='postComment(posts.post_id)'
+                cols='40'
+                rows='5'>
               </textarea>
               </div>
               <div>
-                <button title="Post Comment" @click="showComments(post._id), postComment(details.post_id)">Post Comment</button>
+                <button title='Post Comment' @click='showComments(post._id), postComment(details.post_id)'>Post Comment</button>
               </div>
             </div>
             <!-- COMMENT & EDIT BUTTONS  -->
@@ -98,16 +98,16 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
         commentList: [],
         postedComments: [],
         postsData: [],
-        commentBoxInput: "",
+        commentBoxInput: '',
         commentFormValues: {
-          user_id: "",
-          post_id: "",
-          message: "",
+          user_id: '',
+          post_id: '',
+          message: '',
         },
         details: {
-          post_id: ""
+          post_id: ''
         },
-        msg: "",
+        msg: '',
         postSwitch: true,
         commentToggle: true
       }
@@ -199,11 +199,11 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
     postComment(post_id) {
       this.commentFormValues.post_id = post_id;
       this.commentFormValues.message = this.commentBoxInput;
-      this.commentFormValues.user_id = this.formValues.user_id || "Guest";
+      this.commentFormValues.user_id = this.formValues.user_id || 'Guest';
       //save to message database
       fetch(apiMessages, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.commentFormValues),
         })
         .then((response) => response.text())
@@ -213,7 +213,7 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
         .catch((err) => {
           if (err) throw err;
         });
-      this.commentFormValues.message = "";
+      this.commentFormValues.message = '';
     },
     getComments(post_id) {
       this.commentList = [];
