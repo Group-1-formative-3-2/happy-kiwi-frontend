@@ -39,12 +39,24 @@
           />
           <br>
           <label for='region' class='title'>Region:</label>
-          <select name='region' id='' class='createBox'>
-            <option value='Auckland'>Auckland</option>
-            <option value='Wellington'>Wellington</option>
-            <option value='Nelson'>Nelson</option>
-            <option value='Canterbury'>Canterbury</option>
-            <option value='Otago'>Otago</option>
+          <select name="region" id=""  class='createBox'>
+            <option value="Northland">Northland</option>
+            <option value="Auckland">Auckland</option>
+            <option value="Walkato">Walkato</option>
+            <option value="BayofPlenty">Bay of Plenty</option>
+            <option value="Gisborne">Gisborne</option>
+            <option value="Taranaki">Taranaki</option>
+            <option value="Wanganui">Manawatu Wanganui</option>
+            <option value="Hawke">Hawke's Bay</option>
+            <option value="Wellington">Wellington</option>
+            <option value="Tasman">Tasman</option>
+            <option value="Nelson">Nelson</option>
+            <option value="Auckland">West Coast</option>
+            <option value="WestCoast">Marlborough</option>
+            <option value="Canterbury">Canterbury</option>
+            <option value="Otago">Otago</option>
+            <option value="Southland">Southland</option>
+            <option value="chathamislands">Chatham Islands</option>
           </select>
           <br>
         <div class="spaceContainer">
