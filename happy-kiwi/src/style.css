@@ -294,21 +294,21 @@ button {
 
 /* Commenting styling */
 
-.msgListContainer{
+.commentListContainer{
   overflow: scroll;
   height: 85px;
  }
 
- .msgListContainer h5{
+ .commentListContainer h5{
   margin: 0;
   display:inline; 
  }
 
- .msgListContainer p{ 
+ .commentListContainer p{ 
   display:inline; 
 }
 
- .messageList{
+ .commentList{
  padding: 5px;
  }
 

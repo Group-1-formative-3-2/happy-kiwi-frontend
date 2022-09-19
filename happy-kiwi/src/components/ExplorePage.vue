@@ -39,13 +39,13 @@
               <p>{{ post.description }}</p>
             </div>
 
-            <!-- MESSAGE VIEW -->
-            <div v-show='!comment'>
+            <!-- COMMENT VIEW -->
+            <div v-show='!commentToggle'>
               <div>
                 <h4>Comments:</h4>
-                <ul class="msgListContainer">
-                  <li v-for="(postmsg, i) in postMessages[post._id]" :key="i" class="messageList">
-                    <h5>{{postmsg.user_id}}: </h5>  <p>{{postmsg.message}}</p>
+                <ul class="commentListContainer">
+                  <li v-for="(postCom, i) in postedComments[post._id]" :key="i" class="commentList">
+                    <h5>{{postCom.user_id}}: </h5>  <p>{{postCom.message}}</p>
                   </li>
                 </ul>
               </div>
@@ -54,23 +54,22 @@
               </div>
               <div>
                 <textarea
-                v-bind:value="msgFormValues.message"
-                v-on:input="msgBoxInput = $event.target.value"
-                id="messageToSeller"
+                v-bind:value="commentFormValues.message"
+                v-on:input="commentBoxInput = $event.target.value"
                 outlined
                 label="Please type your comment"
-                @keyup.enter="sendMsgToSeller(posts.post_id)"
+                @keyup.enter="postComment(posts.post_id)"
                 cols="40"
                 rows="5">
               </textarea>
               </div>
               <div>
-                <button title="send message" @click="showDetails(post._id), sendMsgToSeller(details.post_id)">Send Message</button>
+                <button title="Post Comment" @click="showComments(post._id), postComment(details.post_id)">Post Comment</button>
               </div>
             </div>
-
+            <!-- COMMENT & EDIT BUTTONS  -->
             <div class='postButtons'>
-              <button class='commentBtn' @click='comment = false'>Comment</button>
+              <button class='commentBtn' @click='commentToggle = !commentToggle'>Comment</button>
               <button class='editBtn' @click='getDoc(post._id), postSwitch = false'>Edit</button> 
             </div>
           </li>
@@ -95,39 +94,38 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
          description: '',
          imgLink: ''
        },
-       allMessages: [],
-      msglist: [],
-      postMessages: [],
-      postsData: [],
-      msgBoxInput: "",
-      msgFormValues: {
-        user_id: "",
-        post_id: "",
-        message: "",
-      },
-      details: {
-      post_id: ""
-      },
-      msg: "",
-      postSwitch: true,
-      comment: true
-     }
+        allComments: [],
+        commentList: [],
+        postedComments: [],
+        postsData: [],
+        commentBoxInput: "",
+        commentFormValues: {
+          user_id: "",
+          post_id: "",
+          message: "",
+        },
+        details: {
+          post_id: ""
+        },
+        msg: "",
+        postSwitch: true,
+        commentToggle: true
+      }
    },
    methods: {
       clearInputs(){
-                this.animalName = ''
-                this.location = ''
-                this.description = ''
-                this.imgLink = ''
-            },
+        this.animalName = ''
+        this.location = ''
+        this.description = ''
+        this.imgLink = ''
+      },
       getDoc(id) { 
         this.id = id
         fetch(api + this.id, {
             method: 'GET'
-          })
+        })
           .then((response) => response.json())
           .then((data) => {
-            // console.log(data)
             this.formValues.animalName = data.animalName
             this.formValues.location = data.location
             this.formValues.description = data.description
@@ -139,24 +137,23 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
           })
       },
       updateDoc(){
-            fetch(api + this.id, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.formValues)
-            })
-            .then((response) => response.text())
-            .then((data) => {
-            // console.log(data)
-            alert('Work has been Updated')
-            this.getAll()
-            this.clearInputs()
-            this.postSwitch = true
-            })
-            .catch((err) => {
+        fetch(api + this.id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.formValues)
+        })
+          .then((response) => response.text())
+          .then((data) => {
+          alert('Work has been Updated')
+          this.getAll()
+          this.clearInputs()
+          this.postSwitch = true
+        })
+          .catch((err) => {
             if (err) throw err;
-            })
+         })
         },
       deleteDoc(id) { 
         fetch(api + id, {
@@ -172,7 +169,6 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
           .catch((err) => {
             if (err) throw err;
           })
-        
       }, 
       getAll(){
         fetch(api)
@@ -187,60 +183,56 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
           if (err) throw err;
         })
       },
-      showDetails(post_id) {
+      showComments(post_id) {
       this.details.post_id = post_id;
-      this.getMessages(post_id);
-      // console.log(this.details.post_id);
+      this.getComments(post_id);
     },
-    getPostMessages(post_id) {
-        let singlePost = [];
-        this.allMessages.forEach((element) => {
-          if (element.post_id == post_id) {
-            singlePost.push(element);
-          }
-        });
-        return singlePost;
-      },
-    sendMsgToSeller(post_id) {
-      this.msgFormValues.post_id = post_id;
-      this.msgFormValues.message = this.msgBoxInput;
-      this.msgFormValues.user_id = this.formValues.user_id || "Guest";
-      // console.log(this.msgFormValues);
+    // getPostMessages(post_id) {
+    //     let singlePost = [];
+    //     this.allComments.forEach((element) => {
+    //       if (element.post_id == post_id) {
+    //         singlePost.push(element);
+    //       }
+    //     });
+    //     return singlePost;
+    //   },
+    postComment(post_id) {
+      this.commentFormValues.post_id = post_id;
+      this.commentFormValues.message = this.commentBoxInput;
+      this.commentFormValues.user_id = this.formValues.user_id || "Guest";
       //save to message database
       fetch(apiMessages, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.msgFormValues),
+        body: JSON.stringify(this.commentFormValues),
         })
         .then((response) => response.text())
         .then((data) => {
-          // console.log(data);
-          this.getAllMessages(); // refresh all message list
+          this.getAllComments(); // refresh all message list
         })
         .catch((err) => {
           if (err) throw err;
         });
-      this.msgFormValues.message = "";
+      this.commentFormValues.message = "";
     },
-    getMessages(post_id) {
-      this.msglist = [];
+    getComments(post_id) {
+      this.commentList = [];
       if (post_id) {
         let singlePost = [];
-        this.allMessages.forEach((msg) => {
+        this.allComments.forEach((msg) => {
           if (msg.post_id == post_id) {
             singlePost.push(msg);
           }
         });
-        this.msglist = singlePost;
+        this.commentList = singlePost;
       }
     },
-    getAllMessages() {
+    getAllComments() {
       fetch(apiMessages)
       .then((response) => response.json())
       .then((data) => {
-        this.allMessages = data;
-
-        this.postMessages = this.allMessages.reduce((results, msg) => {
+        this.allComments = data;
+        this.postedComments = this.allComments.reduce((results, msg) => {
           results[msg.post_id] = results[msg.post_id] || [];
           results[msg.post_id].push(msg);
           return results;
@@ -253,7 +245,7 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
     },
     mounted(){
       this.getAll();
-      this.getAllMessages();
+      this.getAllComments();
     }
 }
 </script>
