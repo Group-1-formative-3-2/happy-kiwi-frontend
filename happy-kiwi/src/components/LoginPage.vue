@@ -74,17 +74,20 @@ export default {
       console.log("go");
       this.users.forEach((users) => {
         if (
-          users.email == this.formValue.email &&
+          users.email == this.formValue.email.toLowerCase() &&
           users.password == this.formValue.password
         ) {
           this.loggedUser = users.firstname + " " + users.lastname;
           this.isLogin = true;
-          localStorage.userId = users._id;
+          // localStorage.userId = users._id;
           localStorage.loggedUser = this.loggedUser;
-        } else {
-          this.errorMessage = "Email and password must be match!";
+          window.location.replace("explore");
         }
       });
+      if (!this.isLogin )
+        {
+          this.errorMessage = "Email and password must be match!";
+        }
     },
   },
 
