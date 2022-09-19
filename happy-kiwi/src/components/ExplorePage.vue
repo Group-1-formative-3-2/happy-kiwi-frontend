@@ -61,7 +61,7 @@
                 @keyup.enter='postComment(posts.post_id)'
                 cols='40'
                 rows='5'>
-              </textarea>
+                </textarea>
               </div>
               <div>
                 <button title='Post Comment' @click='showComments(post._id), postComment(details.post_id)'>Post Comment</button>
