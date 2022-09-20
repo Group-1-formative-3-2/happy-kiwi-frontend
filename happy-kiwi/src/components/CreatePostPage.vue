@@ -57,7 +57,6 @@
                 })
                 .then((response) => response.text())
                 .then((data) => {
-                console.log(data)
                 this.$router.push('/')
                 })
                 .catch((err) => {

@@ -80,175 +80,165 @@
  </template>
   
  <script>
-const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/';
-const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/functions/api/';
+  const api = 'https://curious-parfait-81c145.netlify.app/.netlify/functions/api/';
+  const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/functions/api/';
 
- export default{
-   name: 'ExplorePage',
-   data() {
-     return {
-       posts: [],
-       id: '',
-       formValues: {
-         animalName: '',
-         location: '',
-         description: '',
-         imgLink: ''
-       },
-        allComments: [],
-        commentList: [],
-        postedComments: [],
-        postsData: [],
-        commentBoxInput: '',
-        commentFormValues: {
-          user_id: '',
-          post_id: '',
-          message: '',
+  export default{
+    name: 'ExplorePage',
+    data() {
+      return {
+        posts: [],
+        id: '',
+        formValues: {
+          animalName: '',
+          location: '',
+          description: '',
+          imgLink: ''
         },
-        details: {
-          post_id: ''
+          allComments: [],
+          commentList: [],
+          postedComments: [],
+          postsData: [],
+          commentBoxInput: '',
+          commentFormValues: {
+            user_id: '',
+            post_id: '',
+            message: '',
+          },
+          details: {
+            post_id: ''
+          },
+          msg: '',
+          postSwitch: true,
+          commentToggle: true
+        }
+    },
+    methods: {
+        clearInputs(){
+          this.animalName = ''
+          this.location = ''
+          this.description = ''
+          this.imgLink = ''
         },
-        msg: '',
-        postSwitch: true,
-        commentToggle: true
-      }
-   },
-   methods: {
-      clearInputs(){
-        this.animalName = ''
-        this.location = ''
-        this.description = ''
-        this.imgLink = ''
-      },
-      getDoc(id) { 
-        this.id = id
-        fetch(api + this.id, {
-            method: 'GET'
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            this.formValues.animalName = data.animalName
-            this.formValues.location = data.location
-            this.formValues.description = data.description
-            this.formValues.imgLink = data.imgLink
+        getDoc(id) { 
+          this.id = id
+          fetch(api + this.id, {
+              method: 'GET'
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              this.formValues.animalName = data.animalName
+              this.formValues.location = data.location
+              this.formValues.description = data.description
+              this.formValues.imgLink = data.imgLink
+              this.getAll()
+            })
+            .catch((err) => {
+              if (err) throw err;
+            })
+        },
+        updateDoc(){
+          fetch(api + this.id, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.formValues)
+          })
+            .then((response) => response.text())
+            .then((data) => {
+            alert('Work has been Updated')
             this.getAll()
-          })
-          .catch((err) => {
-            if (err) throw err;
-          })
-      },
-      updateDoc(){
-        fetch(api + this.id, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.formValues)
-        })
-          .then((response) => response.text())
-          .then((data) => {
-          alert('Work has been Updated')
-          this.getAll()
-          this.clearInputs()
-          this.postSwitch = true
-        })
-          .catch((err) => {
-            if (err) throw err;
-         })
-        },
-      deleteDoc(id) { 
-        fetch(api + id, {
-            method: 'DELETE'           
-          })
-          .then((response) => response.text())
-          .then((data) => {
-            // console.log(data)
-            alert('Work has been deleted')
-            this.getAll()
+            this.clearInputs()
             this.postSwitch = true
           })
+            .catch((err) => {
+              if (err) throw err;
+          })
+          },
+        deleteDoc(id) { 
+          fetch(api + id, {
+              method: 'DELETE'           
+            })
+            .then((response) => response.text())
+            .then((data) => {
+              alert('Work has been deleted')
+              this.getAll()
+              this.postSwitch = true
+            })
+            .catch((err) => {
+              if (err) throw err;
+            })
+        }, 
+        getAll(){
+          fetch(api)
+          .then((response) => response.json())
+          .then((data) => {
+            this.posts = data
+            data.forEach((post) => {
+              this.postsData[post._id] = post;
+              });
+          })
           .catch((err) => {
             if (err) throw err;
           })
-      }, 
-      getAll(){
-        fetch(api)
+        },
+        showComments(post_id) {
+        this.details.post_id = post_id;
+        this.getComments(post_id);
+      },
+      postComment(post_id) {
+        this.commentFormValues.post_id = post_id;
+        this.commentFormValues.message = this.commentBoxInput;
+        this.commentFormValues.user_id = this.formValues.user_id || 'Guest';
+        //save to message database
+        fetch(apiMessages, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.commentFormValues),
+          })
+          .then((response) => response.text())
+          .then((data) => {
+            this.getAllComments(); // refresh all message list
+          })
+          .catch((err) => {
+            if (err) throw err;
+          });
+        this.commentFormValues.message = '';
+      },
+      getComments(post_id) {
+        this.commentList = [];
+        if (post_id) {
+          let singlePost = [];
+          this.allComments.forEach((msg) => {
+            if (msg.post_id == post_id) {
+              singlePost.push(msg);
+            }
+          });
+          this.commentList = singlePost;
+        }
+      },
+      getAllComments() {
+        fetch(apiMessages)
         .then((response) => response.json())
         .then((data) => {
-          this.posts = data
-          data.forEach((post) => {
-            this.postsData[post._id] = post;
-            });
+          this.allComments = data;
+          this.postedComments = this.allComments.reduce((results, msg) => {
+            results[msg.post_id] = results[msg.post_id] || [];
+            results[msg.post_id].push(msg);
+            return results;
+          }, {});
         })
         .catch((err) => {
           if (err) throw err;
-        })
+        });
       },
-      showComments(post_id) {
-      this.details.post_id = post_id;
-      this.getComments(post_id);
-    },
-    // getPostMessages(post_id) {
-    //     let singlePost = [];
-    //     this.allComments.forEach((element) => {
-    //       if (element.post_id == post_id) {
-    //         singlePost.push(element);
-    //       }
-    //     });
-    //     return singlePost;
-    //   },
-    postComment(post_id) {
-      this.commentFormValues.post_id = post_id;
-      this.commentFormValues.message = this.commentBoxInput;
-      this.commentFormValues.user_id = this.formValues.user_id || 'Guest';
-      //save to message database
-      fetch(apiMessages, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.commentFormValues),
-        })
-        .then((response) => response.text())
-        .then((data) => {
-          this.getAllComments(); // refresh all message list
-        })
-        .catch((err) => {
-          if (err) throw err;
-        });
-      this.commentFormValues.message = '';
-    },
-    getComments(post_id) {
-      this.commentList = [];
-      if (post_id) {
-        let singlePost = [];
-        this.allComments.forEach((msg) => {
-          if (msg.post_id == post_id) {
-            singlePost.push(msg);
-          }
-        });
-        this.commentList = singlePost;
+      },
+      mounted(){
+        this.getAll();
+        this.getAllComments();
       }
-    },
-    getAllComments() {
-      fetch(apiMessages)
-      .then((response) => response.json())
-      .then((data) => {
-        this.allComments = data;
-        this.postedComments = this.allComments.reduce((results, msg) => {
-          results[msg.post_id] = results[msg.post_id] || [];
-          results[msg.post_id].push(msg);
-          return results;
-        }, {});
-      })
-      .catch((err) => {
-        if (err) throw err;
-      });
-    },
-    },
-    mounted(){
-      this.getAll();
-      this.getAllComments();
-    }
-}
+  }
 </script>
  
 <style scoped>

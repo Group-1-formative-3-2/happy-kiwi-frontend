@@ -71,7 +71,6 @@ export default {
 
   methods: {
     login() {
-      console.log('go');
       this.users.forEach((users) => {
         if (
           users.email == this.formValue.email.toLowerCase() &&
