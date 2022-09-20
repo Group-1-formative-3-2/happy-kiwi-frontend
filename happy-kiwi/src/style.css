@@ -262,9 +262,10 @@ button:focus-visible {
 /* Explore Page */
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
-li {
+.postList{
   background-color: rgba(255, 255, 255, 0.95);
   color: black;
   padding: 50px;
@@ -336,6 +337,26 @@ button {
   color: var(--white);
   /* border-style: none; */
 }
+
+/* Commenting styling */
+
+.commentListContainer{
+  overflow: scroll;
+  height: 85px;
+ }
+
+ .commentListContainer h5{
+  margin: 0;
+  display:inline; 
+ }
+
+ .commentListContainer p{ 
+  display:inline; 
+}
+
+ .commentList{
+ padding: 5px;
+ }
 
 .BOX
 
@@ -450,8 +471,6 @@ button {
 .signUpLink {
   font-weight: 900;
 }
-
-
 
 .postBtn:hover {
   border-style: solid;
