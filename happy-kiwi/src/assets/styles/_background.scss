@@ -1,0 +1,22 @@
+#bg {
+    position: fixed;
+    z-index: -2;
+    top: -40%;
+    left: -40%;
+    width: 200%;
+    height: 200%;
+
+    img {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        min-width: 50%;
+        min-height: 50%;
+        object-fit: cover;
+      }
+  }
+  
