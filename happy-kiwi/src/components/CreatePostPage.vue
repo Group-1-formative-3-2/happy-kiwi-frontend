@@ -1,6 +1,6 @@
 <template>
 
-    <div class="createPostContainer">
+    <div class='createPostContainer'>
         <div id='bg'>
             <img class='back' src='../assets/Create_Post_Page.jpg' alt=''>
         </div>
@@ -8,15 +8,15 @@
             <div class='post'>
                 <div><h2 class='head centerContainer'>Create Post</h2></div>
                 <label class='title' for='Animal Name'>Animal Name:</label>
-                <input class='createBox' type='text' v-model="formValues.animalName"><br>
+                <input class='createBox' type='text' v-model='formValues.animalName'><br>
                 <label class='title' for='Location'>Location:</label>
-                <input class='createBox' type='text' v-model="formValues.location"><br>
+                <input class='createBox' type='text' v-model='formValues.location'><br>
                 <label class='title' for='Image Url'>Image URL:</label>
-                <input class='createBox' type='text' v-model="formValues.imgLink"><br>
+                <input class='createBox' type='text' v-model='formValues.imgLink'><br>
                 <label class='title' for='Description'>Description:</label>
-                <input class='desBox' type='text' v-model="formValues.description"><br>
-                <div class="centerContainer">
-                    <button class='postBtn' @click="createPost">Post</button>
+                <input class='desBox' type='text' v-model='formValues.description'><br>
+                <div class='centerContainer'>
+                    <button class='postBtn' @click='createPost'>Post</button>
                 </div>
             </div>
         </div>

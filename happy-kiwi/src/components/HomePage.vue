@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="homePage">
-      <div id="bg">
-        <img class="back" src="../assets/Homepage.jpg" alt="" />
+    <div class='homePage'>
+      <div id='bg'>
+        <img class='back' src='../assets/Homepage.jpg' alt='' />
       </div>
 
       <h1>Happy Kiwi</h1>
@@ -13,11 +13,11 @@
         your fellow nature obbsessed kiwis.
       </h3>
 
-      <div class="buttons">
-        <button class="exploreBtn" @click="$router.push('/explore')">
+      <div class='buttons'>
+        <button class='exploreBtn' @click='$router.push("/explore")'>
             Explore
         </button>
-        <button class="signUpBtn"  @click="$router.push('/signup')">
+        <button class='signUpBtn'  @click='$router.push("/signup")'>
             Sign Up
         </button>
       </div>
@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import SignUpPage from "./SignUpPage.vue";
-import ExplorePage from "./ExplorePage.vue";
+import SignUpPage from './SignUpPage.vue';
+import ExplorePage from './ExplorePage.vue';
 export default {
-  name: "HomePage",
+  name: 'HomePage',
   component: {
     ExplorePage,
     SignUpPage,
@@ -69,7 +69,7 @@ h3 {
   padding: 0.6em 1.2em;
   font-weight: 900;
   font-size: larger;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   background-color: #006e87;
   transition: border-color 0.25s;
   text-align: right;
@@ -79,7 +79,7 @@ h3 {
   padding: 0.6em 1.2em;
   font-weight: 900;
   font-size: larger;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   background-color: #f0742f;
   transition: border-color 0.25s;
   text-align: right;
