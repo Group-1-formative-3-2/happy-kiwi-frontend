@@ -276,6 +276,21 @@ const apiMessages = 'https://brilliant-swan-199f59.netlify.app/.netlify/function
     flex-direction: column;
     justify-content: space-between;
   }
+
+  .commentListContainer{
+    padding: 0;    
+
+    .commentList{
+      padding: 0px;
+      background-color: transparent;   
+      h5{
+        margin: 0;
+      }
+      p{
+        margin-top: 0;
+      }
+    }
+  }
   
   .postContainer {
     display: grid;
