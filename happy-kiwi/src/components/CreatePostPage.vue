@@ -58,7 +58,7 @@
                 .then((response) => response.text())
                 .then((data) => {
                 console.log(data)
-                this.$router.push('/')
+                this.$router.push('/explore')
                 })
                 .catch((err) => {
                 if (err) throw err;
