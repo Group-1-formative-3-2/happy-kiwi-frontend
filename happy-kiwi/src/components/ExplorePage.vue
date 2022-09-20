@@ -69,7 +69,8 @@
             </div>
             <!-- COMMENT & EDIT BUTTONS  -->
             <div class='postButtons'>
-              <button class='commentBtn' @click='commentToggle = !commentToggle'>Comment</button>
+              <button v-if="commentToggle" class='commentBtn' @click='commentToggle = !commentToggle'>Show Comments</button>
+              <button v-if="!commentToggle" class='commentBtn' @click='commentToggle = !commentToggle'>Hide Comments</button>
               <button class='editBtn' @click='getDoc(post._id), postSwitch = false'>Edit</button> 
             </div>
           </li>
