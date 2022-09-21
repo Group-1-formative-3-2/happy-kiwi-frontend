@@ -241,12 +241,189 @@
   }
 </script>
  
-<style scoped>
-  button:hover {
-    border-color: white;
+<style lang="scss" scoped>
+  
+ 
+  .head {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: var(--white);
+    margin-top: 0;
   }
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+  
+  /* Explore Page */
+  ul {
+    list-style-type: none;
+}
+  
+  li {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: black;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-</style> 
+
+  .commentListContainer{
+    padding: 0;    
+
+    .commentList{
+      padding: 0px;
+      background-color: transparent;   
+      h5{
+        margin: 0;
+      }
+      p{
+        margin-top: 0;
+      }
+    }
+  }
+  
+  .postContainer {
+    display: grid;
+    margin: 30px 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    padding: 0;
+  }
+  
+  .postImg {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  .commentBtn {
+    color: var(--white);
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--commentGreen);
+    transition: border-color 0.25s;
+    border-style: none;
+
+    .commentBtn:hover {
+      border-color: var(--white);
+    }
+    .commentBtn:focus,
+    .commentBtn:focus-visible {
+      outline: 4px auto -webkit-focus-ring-color;
+    }
+  }
+  
+  .editBtn {
+    color: var(--white);
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--editGreen);
+    transition: border-color 0.25s;
+    border-style: none;
+  }
+  
+  .buttonBox {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+  
+  .postButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+ 
+  .createBox {
+    height: 30px;
+    display: block;
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+
+  
+  .title {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--white);
+    text-align: left;
+    margin-left: 3rem;
+    margin-bottom: 5px;
+  }
+  
+  .editCancel {
+    color: var(--white);
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--buttonGreen);
+    transition: border-color 0.25s;
+    border-style: none;
+  }
+   
+  .editDelete {
+    color: var(--white);
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--deleteRed);
+    transition: border-color 0.25s;
+    border-style: none;
+  }
+  
+  .editUpdate {
+    color: var(--white);
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--editGreen);
+    transition: border-color 0.25s;
+    border-style: none;
+  }
+  
+  textarea{
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 1500px) {
+    .postContainer {
+      display: grid;
+      margin: 30px 50px;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      padding: 0;
+    }
+    .postImg {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .post {
+      width: 600px;
+    }
+  
+    .postContainer {
+      display: grid;
+      margin: 30px 50px;
+      grid-template-columns: 1fr;
+      gap: 50px;
+      padding: 0;
+    }
+    .postImg {
+      width: 100%;
+    }
+  }
+  </style>

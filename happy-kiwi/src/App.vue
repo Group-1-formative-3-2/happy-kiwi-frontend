@@ -132,6 +132,425 @@ export default {
 };
 </script>
 
-<style scoped >
+<style lang="scss">
   
-</style>
+  #bg {
+    position: fixed;
+    z-index: -2;
+    top: -40%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    
+    img {
+      position: absolute;
+      z-index: -2;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      min-width: 50%;
+      min-height: 50%;
+      object-fit: cover;
+    }
+  }
+
+
+  a {
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: inherit;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: var(--white);
+  }
+
+  a:active {
+    text-decoration: underline;
+    color: var(--white);
+  }
+
+  .hamburger{
+    display: none;
+    cursor: pointer;
+  }
+
+  .bar{
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--white);
+}
+  
+  /* Fade in images on App page start */
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 3s ease-in-out;
+  }
+  
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  
+  .slideShowImg {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    z-index: 10;
+    right: 45px;
+    padding: 30px;
+    cursor: pointer;
+    background-color: transparent;
+  
+    p {
+    font-size: 2em;
+    color: var(--white);
+    font-weight: 900;
+    }
+  }
+  
+  .exploreBtn {
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--buttonGreen);
+    transition: border-color 0.25s;
+    text-align: right;
+    color: white;
+  }
+  
+  .signUpBtn {
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-weight: 900;
+    font-size: larger;
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--buttonOrange);
+    transition: border-color 0.25s;
+    text-align: right;
+    color: white;
+  }
+  
+  button:hover {
+    border-color: white;
+  }
+  
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+  .SlideWrapper {
+    z-index: 100;
+  }
+  /* Fade in images on App page end */
+  
+  .appContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 30px;
+    background-color: var(--boxBackground);
+    backdrop-filter: blur(27px);
+    color: var(--white);
+  
+    a {
+      color: var(--white);
+      font-family: "Ubuntu", sans-serif;
+    }
+  
+    a:active {
+      text-decoration: underline;
+    }
+  }
+  
+  .logoImg {
+    height: 80px;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .router_links {
+    display: flex;
+    gap: 80px;
+    font-size: 1.5em;
+  
+    .router_link {
+    font-weight: 900;
+    color: var(--white);
+    text-decoration: inherit;
+    }
+    .router_link:hover {
+      text-decoration: underline;
+      color: var(--white);
+    }
+  
+    .router_link:active {
+      text-decoration: underline;
+      color: var(--white);
+    }
+  
+  }
+  
+  .switchSlideBtn {
+    color: var(--white);
+    font-weight: 500;
+    font-family: "Ubuntu", sans-serif;
+    cursor: pointer;
+  
+    .switchSlideBtn:hover {
+      color: #fff;
+      text-decoration: underline;
+      font-family: "Ubuntu", sans-serif;
+    }
+  
+    .switchSlideBtn:active {
+      color: var(--white);
+      text-decoration: underline;
+      font-family: "Ubuntu", sans-serif;
+  }
+  }
+  
+  .footer {
+    background-color: var(--footerGreen);
+    height: 25px;
+    padding: 15px 50px;
+  
+    a {
+      text-decoration: underline;
+      text-align: center;
+      padding-right: 50px;
+    }
+  }
+
+
+  // shared styles start
+  .createPostContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .boxWrapper {
+    width: 672px;
+    padding: 40px 40px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: var(--boxBackground);
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(27px);
+    overflow-y: scroll;
+  }
+  
+  .post {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+  }
+  
+  .postDisplay {
+    align-content: center;
+  }
+
+  input,
+  button {
+    padding: 0.5rem 0.75rem;
+    border-style: none;
+  }
+  
+  .postBtn {
+      background-color: var(--buttonGreen);
+      color: var(--white);
+      font-family: "Open Sans", sans-serif;
+      font-size: larger;
+      font-weight: 900;
+      width: 190px;
+      height: 49px;
+      border-style: none;
+      padding: 0.5rem 0.75rem;
+  }
+  .postBtn:hover {
+    border-style: solid;
+    border-color: var(--white);
+  }
+  .postBtn:focus,
+  .postBtn:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+  .createBox {
+    height: 30px;
+    display: block;
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+
+  .centerContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .spaceContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px 0 50px;      
+    
+    .spaceContainer span {
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .passwordLink{
+      font-weight: 900;
+    }
+
+    .signUpLink {
+    font-weight: 900;
+  }
+  }
+  .spaceContainer span:hover {
+      text-decoration: underline;
+    }
+
+  .desBox {
+    margin-left: 45px;
+    margin-right: 45px;
+    height: 90px;
+    display: block;
+  }
+
+  .title {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--white);
+    text-align: left;
+    margin-left: 3rem;
+    margin-bottom: 5px;
+  }
+
+  @media screen and (max-width: 1500px) {
+  .router_links{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.4em;
+    gap: 40px;
+  }
+}
+ 
+  @media screen and (max-width: 700px) {
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding-right: 50px;
+    }
+  
+    .exploreBtn {
+      text-align: center;
+    }
+  
+    .boxWrapper {
+      width: 376px;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      z-index: -1;
+    }
+
+  
+    .footer {
+      height: 45px;
+      padding: 20px 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+  
+      a {
+      text-decoration: underline;
+      text-align: center;
+      padding-right: 0px;
+      }
+    }
+
+    .hamburger{
+      display: block;
+      cursor: pointer;
+    }
+
+    .hamburger.active .bar:nth-child(2){
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1){
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3){
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .router_links{
+      position: fixed;
+      left: -100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+      margin-top: 486.49px;
+      padding: 50px 0;
+      background-color: var(--navBackground);
+      backdrop-filter: blur(27px);
+      color: var(--white);
+      transition: 0.5s ease-in-out;
+    }
+
+    .router_links.active{
+      left: 0;
+
+    }
+
+    .logoImg {
+      height: 60px;
+      margin-top: 20px;
+      margin-left: 40px;
+      margin-bottom: 20px;
+    }
+
+    .boxWrapper {
+      width: 376px;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    .post {
+      width: 600px;
+    } 
+  }
+  </style>

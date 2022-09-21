@@ -78,6 +78,14 @@
 </script>
 
 <!-- Google Fonts Links -->
-<style scoped>
-        
+
+<style lang="scss" scoped>
+    .head {
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 700;
+      font-size: 25px;
+      color: var(--white);
+      margin-top: 0;
+    }
+
 </style>
