@@ -1,138 +1,183 @@
 <template>
-  <div class='createPostContainer'>
-    <div id='bg'>
-        <img class='back' src='../assets/Login_Page.jpg' alt=''>
+  <div class="createPostContainer">
+    <div id="bg">
+      <img class="back" src="../assets/Login_Page.jpg" alt="" />
     </div>
-    <div class='boxWrapper'>
-      <form class='post'>
-      <div><h2 class='head centerContainer'>Sign Up</h2></div>
-          <label for='inputUsername' class='title'>Username:</label>
+    <div class="boxWrapper">
+      <form class="post" @submit.prevent="signUp">
+        <div><h2 class="head centerContainer">Sign Up</h2></div>
+        <label for="username" class="title">Username:</label>
+        <div class="sigIn-input">
           <input
-            type='username'
-            class='createBox'
-            id='inputUsername'
-            placeholder='Username'
+            pattern="[a-zA-Z0-9]{1,}"
+            type="firstname"
+            class="createBox-signUp"
+            id="inputFirstname"
+            placeholder="Your Firstname"
+            v-model="signUpFormValues.firstname"
           />
-          <br>
-          <label for='inputEmail1' class='title'>E-mail:</label>
           <input
-            pattern='[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}'
-            id='email'
-            class='createBox'
-            placeholder='enter a valid email address'
+            pattern="[a-zA-Z0-9]{1,}"
+            type="lasttname"
+            class="createBox-signUp"
+            id="inputLastname"
+            placeholder="Your Surname"
+            v-model="signUpFormValues.lastname"
           />
-          <br>
-          <label for='InputPassword1' class='title'>Password:</label>
-          <input
-            pattern='[a-zA-Z0-9]{8,}'
-            id='password'
-            class='createBox'
-            placeholder='at least 8 characters'
-          />
-          <br>
-          <label for='InputPassword1' class='title'>Confirm Password:</label>
-          <input
-            type='password'
-            class='createBox'
-            id='InputPassword'
-            placeholder='confirm password'
-          />
-          <br>
-          <label for='region' class='title'>Region:</label>
-          <select name='region' id=''  class='createBox'>
-            <option value='Northland'>Northland</option>
-            <option value='Auckland'>Auckland</option>
-            <option value='Walkato'>Walkato</option>
-            <option value='BayofPlenty'>Bay of Plenty</option>
-            <option value='Gisborne'>Gisborne</option>
-            <option value='Taranaki'>Taranaki</option>
-            <option value='Wanganui'>Manawatu Wanganui</option>
-            <option value='Hawke'>Hawke's Bay</option>
-            <option value='Wellington'>Wellington</option>
-            <option value='Tasman'>Tasman</option>
-            <option value='Nelson'>Nelson</option>
-            <option value='Auckland'>West Coast</option>
-            <option value='WestCoast'>Marlborough</option>
-            <option value='Canterbury'>Canterbury</option>
-            <option value='Otago'>Otago</option>
-            <option value='Southland'>Southland</option>
-            <option value='chathamislands'>Chatham Islands</option>
-          </select>
-          <br>
-        <div class='spaceContainer'>
-          <router-link to='/login'>Sign In</router-link>
-          <span>Forgot Password</span>
         </div>
+        <br />
+        <label for="inputEmail1" class="title">E-mail:</label>
+        <input
+          pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}"
+          id="email"
+          class="createBox"
+          placeholder="enter a valid email address"
+          v-model="signUpFormValues.email"
+        />
+        <br />
+        <label for="InputPassword1" class="title">Password:</label>
+        <input
+          pattern="[a-zA-Z0-9]{8,}"
+          id="password"
+          class="createBox"
+          placeholder="at least 8 characters"
+          v-model="signUpFormValues.password"
+        />
+        <br />
+        <label for="InputPassword1" class="title">Confirm Password:</label>
+        <input
+          type="password"
+          class="createBox"
+          id="InputPassword"
+          placeholder="confirm password"
+          v-model="confirmPassword"
+        />
+        <span class="notes">{{ passwordMatch }}</span>
 
-        <br>
-
-        <div class='centerContainer'>
-          <button type='submit' class='postBtn'>Go</button>
+        <br />
+        <label for="region" class="title">Region:</label>
+        <select name="region" id="" class="createBox">
+          <option value="Northland">Northland</option>
+          <option value="Auckland">Auckland</option>
+          <option value="Walkato">Walkato</option>
+          <option value="BayofPlenty">Bay of Plenty</option>
+          <option value="Gisborne">Gisborne</option>
+          <option value="Taranaki">Taranaki</option>
+          <option value="Wanganui">Manawatu Wanganui</option>
+          <option value="Hawke">Hawke's Bay</option>
+          <option value="Wellington">Wellington</option>
+          <option value="Tasman">Tasman</option>
+          <option value="Nelson">Nelson</option>
+          <option value="Auckland">West Coast</option>
+          <option value="WestCoast">Marlborough</option>
+          <option value="Canterbury">Canterbury</option>
+          <option value="Otago">Otago</option>
+          <option value="Southland">Southland</option>
+          <option value="chathamislands">Chatham Islands</option>
+        </select>
+        <br />
+        <div class="spaceContainer">
+          <router-link to="/login">Sign In</router-link>
+          <span class="note">Forgot Password</span>
         </div>
+        <br />
 
+        <div class="centerContainer">
+          <input type="submit" class="postBtn" value="Go"  />
+        </div>
+        <br />
+        <div class="centerContainer" v-if="isSignUp" >{{ ok2GoMessage }}</div>
+        <div class="centerContainer" v-if="isEmailError">{{ emailErrorMsg }}</div>
       </form>
-</div>
+    </div>
   </div>
 </template>
 
 <script>
+const apiUsers = "https://api-users-login.netlify.app/.netlify/functions/api";
 export default {
-  data: () => ({
-    isEmailError: false,
-    emailErrorMsg: 'Email is already taken',
-    signUpFormValues: {
-      username: '',
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: '',
-    },
-
-    computed: {
-      passwordMatch() {
-        return () =>
-          this.formValues.password === this.verify || 'Password must match';
+  data() {
+    return {
+      isEmailError: false,
+      emailErrorMsg: "Email address is taken",
+      isSignUp: true,
+      confirmPassword: "",
+      signUpFormValues: {
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
       },
+      isSignUp: false,
+      ok2GoMessage: "yippee! You can sign in to explore more",
+    };
+  },
+  computed: {
+    passwordMatch() {
+      return this.signUpFormValues.password === this.confirmPassword
+        ? ""
+        : "Passwords must match";
     },
-    // method: {
-    //   register() {
-    //     let validform = this.$refs.registerForm.validate();
-    //     if (validform) {
-    //       // check email from database
-    //       this.users.forEach((element) => {
-    //         if (element.email == this.formValues.email) {
-    //           this.isEmailError = true;
-    //         }
-    //       });
-
-    //       if (!this.isEmailError) {
-    //         fetch(apiUsers, {
-    //           method: 'POST',
-    //           headers: { 'Content-Type': 'application/json' },
-    //           body: JSON.stringify(this.formValues),
-    //         })
-    //           .then((response) => response.text())
-    //           .then((data) => {
-    //             console.log(data);
-    //             this.dialog = false;
-    //             this.loggedUser =
-    //               this.formValues.firstname + ' ' + this.formValues.lastname;
-    //             // localStorage
-    //             localStorage.userId = data; // inserted document id
-    //             localStorage.loggedUser = this.loggedUser;
-    //             this.$emit('logged-user', this.loggedUser);
-    //             document.location.reload(true); // force page reload to show admin table
-    //           })
-    //           .catch((err) => {
-    //             if (err) throw err;
-    //           });
-    //       }
-    //     }
-    //   },
-    // },
-  }),
+  },
+  methods: {
+    signUp() {
+      console.log(this.signUpFormValues);
+      //checking email add from db
+      this.users.forEach((user) => {
+        if (user.email == this.signUpFormValues.email) {
+          this.isEmailError = true;
+        }
+      });
+      //add user to db
+      if (!this.isEmailError) {
+        fetch(apiUsers, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(this.signUpFormValues),
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            console.log(data);
+            this.isSignUp = true;
+          })
+          .catch((err) => {
+            if (err) throw err;
+          });
+      }
+      else{
+        console.log("test")
+      }
+    },
+  },
+  mounted() {
+    // get all users
+    fetch(apiUsers)
+      .then((response) => response.json())
+      .then((data) => {
+        this.users = data;
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+  },
 };
 </script>
 
+
 <style scoped>
+.createBox-signUp {
+  height: 30px;
+  display: block;
+  margin-left: 45px;
+  margin-right: 45px;
+  width: 40%;
+}
+.sigIn-input {
+  display: flex;
+  flex-direction: row;
+}
+.notes {
+  margin-left: 45px;
+  margin-right: 45px;
+}
 </style>
