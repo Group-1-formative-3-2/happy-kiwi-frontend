@@ -13,7 +13,7 @@
             type="firstname"
             class="createBox-signUp"
             id="inputFirstname"
-            placeholder="Your First Name"
+            placeholder="Your Firstname"
           />
           <input
             pattern="[a-zA-Z0-9]{1,}"
