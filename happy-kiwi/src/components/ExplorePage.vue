@@ -162,6 +162,7 @@
             })
             .then((response) => response.text())
             .then((data) => {
+
               alert('Work has been deleted')
               this.getAll()
               this.postSwitch = true
@@ -205,6 +206,8 @@
             if (err) throw err;
           });
         this.commentFormValues.message = '';
+        this.commentBoxInput = '';
+        
       },
       getComments(post_id) {
         this.commentList = [];
@@ -240,8 +243,9 @@
       }
   }
 </script>
- 
-<style lang="scss" scoped>
+
+
+  <style lang="scss" scoped>
   
  
   .head {
@@ -265,12 +269,10 @@
     flex-direction: column;
     justify-content: space-between;
   }
-
   .commentListContainer{
     overflow: scroll;
     height: 85px;
     padding: 0;
-
     .commentList{
       padding: 0px;
       background-color: transparent;   
@@ -306,7 +308,6 @@
     background-color: var(--commentGreen);
     transition: border-color 0.25s;
     border-style: none;
-
     .commentBtn:hover {
       border-color: var(--white);
     }
@@ -348,7 +349,6 @@
     margin-left: 45px;
     margin-right: 45px;
   }
-
   
   .title {
     font-family: "Ubuntu", sans-serif;
