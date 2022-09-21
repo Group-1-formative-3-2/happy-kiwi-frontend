@@ -15,7 +15,7 @@
 
       <div>
         <span>{{ loggedName }}</span>
-        <span v-if='loggedName' @click='logOut' style="cursor:pointer">👋</span>
+        <span v-if='loggedName' @click='logOut' style='cursor:pointer'>👋</span>
       </div>
 
       <div class='hamburger'>
@@ -132,7 +132,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang='scss'>
   
   #bg {
     position: fixed;
@@ -227,7 +227,7 @@ export default {
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: var(--buttonGreen);
     transition: border-color 0.25s;
     text-align: right;
@@ -239,7 +239,7 @@ export default {
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: var(--buttonOrange);
     transition: border-color 0.25s;
     text-align: right;
@@ -278,7 +278,7 @@ export default {
   
     a {
       color: var(--white);
-      font-family: "Ubuntu", sans-serif;
+      font-family: 'Ubuntu', sans-serif;
     }
   
     a:active {
@@ -318,19 +318,19 @@ export default {
   .switchSlideBtn {
     color: var(--white);
     font-weight: 500;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     cursor: pointer;
   
     .switchSlideBtn:hover {
       color: #fff;
       text-decoration: underline;
-      font-family: "Ubuntu", sans-serif;
+      font-family: 'Ubuntu', sans-serif;
     }
   
     .switchSlideBtn:active {
       color: var(--white);
       text-decoration: underline;
-      font-family: "Ubuntu", sans-serif;
+      font-family: 'Ubuntu', sans-serif;
   }
   }
   
@@ -386,7 +386,7 @@ export default {
   .postBtn {
       background-color: var(--buttonGreen);
       color: var(--white);
-      font-family: "Open Sans", sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: larger;
       font-weight: 900;
       width: 190px;
@@ -446,7 +446,7 @@ export default {
   }
 
   .title {
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
     font-size: 20px;
     color: var(--white);

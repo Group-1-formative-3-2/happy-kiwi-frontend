@@ -69,8 +69,8 @@
             </div>
             <!-- COMMENT & EDIT BUTTONS  -->
             <div class='postButtons'>
-              <button v-if="commentToggle" class='commentBtn' @click='commentToggle = !commentToggle'>Show Comments</button>
-              <button v-if="!commentToggle" class='commentBtn' @click='commentToggle = !commentToggle'>Hide Comments</button>
+              <button v-if='commentToggle' class='commentBtn' @click='commentToggle = !commentToggle'>Show Comments</button>
+              <button v-if='!commentToggle' class='commentBtn' @click='commentToggle = !commentToggle'>Hide Comments</button>
               <button class='editBtn' @click='getDoc(post._id), postSwitch = false'>Edit</button> 
             </div>
           </li>
@@ -162,7 +162,6 @@
             })
             .then((response) => response.text())
             .then((data) => {
-
               alert('Work has been deleted')
               this.getAll()
               this.postSwitch = true
@@ -245,11 +244,9 @@
 </script>
 
 
-  <style lang="scss" scoped>
-  
- 
+<style lang='scss' scoped>
   .head {
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
     font-size: 25px;
     color: var(--white);
@@ -308,7 +305,7 @@
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: var(--commentGreen);
     transition: border-color 0.25s;
     border-style: none;
@@ -326,7 +323,7 @@
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: var(--editGreen);
     transition: border-color 0.25s;
     border-style: none;
@@ -355,7 +352,7 @@
   }
   
   .title {
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
     font-size: 20px;
     color: var(--white);
@@ -369,7 +366,7 @@
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: var(--buttonGreen);
     transition: border-color 0.25s;
     border-style: none;
@@ -380,7 +377,7 @@
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: var(--deleteRed);
     transition: border-color 0.25s;
     border-style: none;
@@ -391,7 +388,7 @@
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: var(--editGreen);
     transition: border-color 0.25s;
     border-style: none;
@@ -432,4 +429,4 @@
       width: 100%;
     }
   }
-  </style>
+</style>

@@ -37,7 +37,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 
   .homePage {
     text-align: right;
@@ -71,7 +71,7 @@ export default {
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: #006e87;
     transition: border-color 0.25s;
     text-align: right;
@@ -81,7 +81,7 @@ export default {
     padding: 0.6em 1.2em;
     font-weight: 900;
     font-size: larger;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: #f0742f;
     transition: border-color 0.25s;
     text-align: right;

@@ -14,7 +14,7 @@
                 <label class='title' for='Image Url'>Image URL:</label>
                 <input class='createBox' type='text' v-model='formValues.imgLink'><br>
                 <label class='title' for='Description'>Description:</label>
-                <textarea class='desBox' type='text' v-model="formValues.description"></textarea><br>
+                <textarea class='desBox' type='text' v-model='formValues.description'></textarea><br>
                 <div class='centerContainer'>
                     <button class='postBtn' @click='createPost'>Post</button>
                 </div>
@@ -79,9 +79,9 @@
 
 <!-- Google Fonts Links -->
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
     .head {
-      font-family: "Ubuntu", sans-serif;
+      font-family: 'Ubuntu', sans-serif;
       font-weight: 700;
       font-size: 25px;
       color: var(--white);
