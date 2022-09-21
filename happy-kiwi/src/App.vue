@@ -442,6 +442,7 @@ export default {
     margin-right: 45px;
     height: 90px;
     display: block;
+    padding: 0.50rem 0.75rem;
   }
 
   .title {

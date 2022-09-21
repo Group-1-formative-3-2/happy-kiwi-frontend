@@ -14,7 +14,7 @@
                 <label class='title' for='Image Url'>Image URL:</label>
                 <input class='createBox' type='text' v-model='formValues.imgLink'><br>
                 <label class='title' for='Description'>Description:</label>
-                <input class='desBox' type='text' v-model='formValues.description'><br>
+                <textarea class='desBox' type='text' v-model="formValues.description"></textarea><br>
                 <div class='centerContainer'>
                     <button class='postBtn' @click='createPost'>Post</button>
                 </div>
