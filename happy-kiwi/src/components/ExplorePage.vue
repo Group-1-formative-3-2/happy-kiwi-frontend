@@ -64,7 +64,7 @@
                 </textarea>
               </div>
               <div>
-                <button title='Post Comment' @click='showComments(post._id), postComment(details.post_id)'>Post Comment</button>
+                <button class='postBtn' title='Post Comment' @click='showComments(post._id), postComment(details.post_id)'>Post Comment</button>
               </div>
             </div>
             <!-- COMMENT & EDIT BUTTONS  -->
@@ -267,7 +267,9 @@
   }
 
   .commentListContainer{
-    padding: 0;    
+    overflow: scroll;
+    height: 85px;
+    padding: 0;
 
     .commentList{
       padding: 0px;
