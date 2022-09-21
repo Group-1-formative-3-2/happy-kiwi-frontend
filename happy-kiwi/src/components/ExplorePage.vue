@@ -58,13 +58,14 @@
                 v-on:input='commentBoxInput = $event.target.value'
                 outlined
                 label='Please type your comment'
+                @keydown = "(isReplyBtnEnable = commentBoxInput = !'' ? false : true)"
                 @keyup.enter='postComment(posts.post_id)'
                 cols='40'
                 rows='5'>
                 </textarea>
               </div>
               <div>
-                <button class='postBtn' title='Post Comment' @click='showComments(post._id), postComment(details.post_id)'>Post Comment</button>
+                <button :disabled='isReplyBtnEnable'  class='postBtn' title='Post Comment' @click='showComments(post._id), postComment(details.post_id)'>Post Comment</button>
               </div>
             </div>
             <!-- COMMENT & EDIT BUTTONS  -->
@@ -110,7 +111,8 @@
           },
           msg: '',
           postSwitch: true,
-          commentToggle: true
+          commentToggle: true,
+          isReplyBtnEnable: true
         }
     },
     methods: {
@@ -206,6 +208,7 @@
           });
         this.commentFormValues.message = '';
         this.commentBoxInput = '';
+        this.isReplyBtnEnable = true;
         
       },
       getComments(post_id) {
