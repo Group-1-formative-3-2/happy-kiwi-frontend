@@ -214,7 +214,7 @@
         if (post_id) {
           let singlePost = [];
           this.allComments.forEach((msg) => {
-            if (msg.post_id == post_id) {
+            if (msg.post_id === post_id) {
               singlePost.push(msg);
             }
           });
@@ -268,10 +268,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    h4{
+      margin: 10px 0;
+    }
   }
   .commentListContainer{
     overflow: scroll;
-    height: 85px;
+    height: 95px;
     padding: 0;
     .commentList{
       padding: 0px;
