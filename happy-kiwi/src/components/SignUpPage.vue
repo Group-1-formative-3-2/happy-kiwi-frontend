@@ -6,10 +6,10 @@
     <div class="boxWrapper">
       <form class="post" @submit.prevent="signUp">
         <div><h2 class="head centerContainer">Sign Up</h2></div>
-        <label for="username" class="title">Username:</label>
+        <label for="username" class="title">Name:</label>
         <div class="sigIn-input">
           <input
-            pattern="[a-zA-Z0-9]{1,}"
+            pattern="[a-zA-Z0-9]{2,}"
             type="firstname"
             class="createBox-signUp"
             id="inputFirstname"
@@ -17,7 +17,7 @@
             v-model="signUpFormValues.firstname"
           />
           <input
-            pattern="[a-zA-Z0-9]{1,}"
+            pattern="[a-zA-Z0-9]{2,}"
             type="lasttname"
             class="createBox-signUp"
             id="inputLastname"
@@ -28,7 +28,7 @@
         <br />
         <label for="inputEmail1" class="title">E-mail:</label>
         <input
-          pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}"
+          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" 
           id="email"
           class="createBox"
           placeholder="enter a valid email address"

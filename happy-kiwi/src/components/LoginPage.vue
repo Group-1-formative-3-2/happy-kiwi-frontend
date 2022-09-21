@@ -10,7 +10,7 @@
         <label for='inputEmail1' class='title'>E-mail:</label>
         <input
           class='createBox'
-          pattern='[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}'
+          pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
           v-model='formValue.email'
           id='email'
           required

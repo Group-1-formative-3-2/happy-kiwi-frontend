@@ -15,7 +15,7 @@
 
       <div>
         <span>{{ loggedName }}</span>
-        <span v-if='loggedName' @click='logOut'>out</span>
+        <span v-if='loggedName' @click='logOut' style="cursor:pointer">👋</span>
       </div>
 
       <div class='hamburger'>
