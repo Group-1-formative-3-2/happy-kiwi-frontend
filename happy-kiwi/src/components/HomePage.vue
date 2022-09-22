@@ -2,7 +2,7 @@
   <div>
     <div class='homePage'>
       <div id='bg'>
-        <img class='back' src='../assets/Homepage.jpg' alt='' />
+        <img class='back' src='../assets/Homepage darkened.jpg' alt='' />
       </div>
 
       <h1>Happy Kiwi</h1>
@@ -122,7 +122,6 @@ export default {
   
     .buttons {
       margin-right: 0px;
-  
     }
   }
   </style>

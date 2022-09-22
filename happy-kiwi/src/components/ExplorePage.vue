@@ -17,7 +17,10 @@
             <label class='title' for='Image Url'>Image URL:</label>
             <input class='createBox' type='text' v-model='formValues.imgLink'><br>
             <label class='title' for='Description'>Description:</label>
-            <input class='desBox' type='text' v-model='formValues.description'><br>
+          
+
+            <textarea class='desBox' type='text' v-model='formValues.description'></textarea>
+            <br>
             <div class='buttonBox'>
               <button @click='postSwitch = true' class='editCancel'>Cancel</button>
               <button @click='deleteDoc(id)' class='editDelete'>Delete Document</button>
@@ -397,9 +400,7 @@
     border-style: none;
   }
   
-  textarea{
-    width: 100%;
-  }
+  
   
   @media screen and (max-width: 1500px) {
     .postContainer {

@@ -15,10 +15,7 @@
 
       <div>
         <span>{{ loggedName }}</span>
-      </div>
-
-      <div>
-        <span v-if='loggedName' @click='logOut' style='cursor:pointer'> Log Out</span>
+        <span v-if='loggedName' @click='logOut' style='cursor:pointer'>👋</span>
       </div>
 
       <div class='hamburger'>
@@ -182,14 +179,14 @@ export default {
   }
 
   .bar{
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  background-color: var(--white);
-}
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--white);
+  }
   
   /* Fade in images on App page start */
   .fade-enter-active,
@@ -268,6 +265,8 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
+    background-color: linear-gradient(90deg, rgba(125,160,87,0) 0%, rgba(125,160,87,1) 150%);
+
   }
   
   .header {
@@ -438,14 +437,15 @@ export default {
   }
   .spaceContainer span:hover {
       text-decoration: underline;
-    }
+  }
 
   .desBox {
+    height: 90px;
     margin-left: 45px;
     margin-right: 45px;
-    height: 90px;
     display: block;
     padding: 0.50rem 0.75rem;
+    width: 580px;
   }
 
   .title {
@@ -465,9 +465,13 @@ export default {
     font-size: 1.4em;
     gap: 40px;
   }
+
+  .desBox{
+      width: 585px;
+    }
 }
  
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 780px) {
 
     .header {
       display: flex;
@@ -521,24 +525,29 @@ export default {
 
     .router_links{
       position: fixed;
-      left: -100%;
+      right: -100%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 40px;
+      justify-content: space-evenly;
       width: 100%;
-      margin-top: 486.49px;
-      padding: 50px 0;
+      gap: 0px;
+      // margin-top: 486.49px;
+      margin-top: 186.49px;
+      padding: 30px 0;
       background-color: var(--navBackground);
       backdrop-filter: blur(27px);
       color: var(--white);
       transition: 0.5s ease-in-out;
+      font-size: 1.5em;
+
     }
 
     .router_links.active{
-      left: 0;
-
+      right: 0;
     }
+
+   
 
     .logoImg {
       height: 60px;
@@ -556,5 +565,12 @@ export default {
     .post {
       width: 600px;
     } 
+    .boxWrapper{
+      z-index: 1;
+    }
+
+    .desBox{
+      width: 365px;
+    }
   }
   </style>
