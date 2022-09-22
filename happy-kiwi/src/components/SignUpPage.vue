@@ -52,7 +52,7 @@
           placeholder='confirm password'
           v-model='confirmPassword'
         />
-        <span class='notes'>{{ passwordMatch }}</span>
+        <span class='notes '>{{ passwordMatch }}</span>
 
         <br />
         <label for='region' class='title'>Region:</label>
@@ -77,8 +77,8 @@
         </select>
         <br />
         <div class='spaceContainer'>
-          <router-link to='/login'>Sign In</router-link>
-          <span class='note'>Forgot Password</span>
+          <router-link to='/login' class="signUpLink">Sign In</router-link>
+          <span class='passwordLink'>Forgot Password</span>
         </div>
         <br />
 
