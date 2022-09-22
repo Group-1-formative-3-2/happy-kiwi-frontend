@@ -1,7 +1,6 @@
 <!-- CODED BY MOYSAR WITH SUBMIT PREVENT FUNCTIONAILTY ADDED BY AMY -->
 
 <template>
-
     <div class='createPostContainer'>
         <div id='bg'>
             <img class='back' src='../assets/Create_Post_Page.jpg' alt=''>
@@ -41,23 +40,23 @@
                 posts: [],
                 id: '',
                 formValues: {
-                location: '',
-                animalName: '',
-                imgLink: '',
-                description: ''
+                    location: '',
+                    animalName: '',
+                    imgLink: '',
+                    description: ''
                 },
                 submitPrevent: true
             }
-            },
-            methods: {
-             clearInputs(){
-                this.location = ''
-                this.animalName = ''
-                this.imgLink = ''
-                this.description = ''
-            },
-            getPosts(){
-                fetch(api)
+        },
+        methods: {
+            clearInputs(){
+            this.location = ''
+            this.animalName = ''
+            this.imgLink = ''
+            this.description = ''
+        },
+        getPosts(){
+            fetch(api)
                 .then((response) => response.json())
                 .then((data) => {
                 this.posts = data
@@ -65,46 +64,46 @@
                 .catch((err) => {
                 if (err) throw err;
                 })
-            },
-            preventPost() {
-                if (
-                    this.formValues.location === '' &&
-                    this.formValues.animalName === '' &&
-                    this.formValues.imgLink === '' &&
-                    this.formValues.description === ''
-                ) {
-                    this.submitPrevent = true
-                    alert('Please Complete the Form')
-                }
-                else {
-                    this.submitPrevent = false
+        },
+        preventPost() {
+            if (
+                this.formValues.location === '' &&
+                this.formValues.animalName === '' &&
+                this.formValues.imgLink === '' &&
+                this.formValues.description === ''
+            ){
+                this.submitPrevent = true
+                alert('Please Complete the Form')
+            }
+            else {
+                this.submitPrevent = false
 
-                    fetch(api + this.id, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(this.formValues)
+                fetch(api + this.id, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.formValues)
+                })
+                    .then((response) => response.text())
+                    .then(
+                    this.submitPrevent = true
+                    )
+                    .then((data) => {
+                    alert('Work has been Posted')
+                    this.getPosts()
+                    this.clearInputs()
+                    window.location.replace('explore');
                     })
-                        .then((response) => response.text())
-                        .then(
-                        this.submitPrevent = true
-                        )
-                        .then((data) => {
-                        alert('Work has been Posted')
-                        this.getPosts()
-                        this.clearInputs()
-                        window.location.replace('explore');
-                        })
-                        .catch((err) => {
-                        if (err) throw err;
-                        })
+                    .catch((err) => {
+                    if (err) throw err;
+                    })
                 }
             },
         },
         mounted(){
                 this.getPosts();
-            }
+        }
     }
 </script>
 

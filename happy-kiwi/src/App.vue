@@ -47,8 +47,7 @@
       <a href='#'>&copy Copyright 2022 - Happy Kiwi </a>
       <a href='https://zip.org.nz/' target='_blank'>Zero Invasive Predators</a>
       <a href='https://www.doc.govt.nz/' target='_blank'
-        >Department of Conservation</a
-      >
+        >Department of Conservation</a>
     </div>
   </div>
 </template>
@@ -133,7 +132,7 @@ export default {
 </script>
 
 <style lang='scss'>
-  
+
   #bg {
     position: fixed;
     z-index: -2;
@@ -216,9 +215,9 @@ export default {
     background-color: transparent;
   
     p {
-    font-size: 2em;
-    color: var(--white);
-    font-weight: 900;
+      font-size: 2em;
+      color: var(--white);
+      font-weight: 900;
     }
   }
   
@@ -266,7 +265,6 @@ export default {
     justify-content: space-between;
     height: 100vh;
     background-color: linear-gradient(90deg, rgba(125,160,87,0) 0%, rgba(125,160,87,1) 150%);
-
   }
   
   .header {
@@ -305,6 +303,7 @@ export default {
     color: var(--white);
     text-decoration: inherit;
     }
+    
     .router_link:hover {
       text-decoration: underline;
       color: var(--white);
@@ -333,7 +332,7 @@ export default {
       color: var(--white);
       text-decoration: underline;
       font-family: 'Ubuntu', sans-serif;
-  }
+    }
   }
   
   .footer {
@@ -386,20 +385,22 @@ export default {
   }
   
   .postBtn {
-      background-color: var(--buttonGreen);
-      color: var(--white);
-      font-family: 'Open Sans', sans-serif;
-      font-size: larger;
-      font-weight: 900;
-      width: 190px;
-      height: 49px;
-      border-style: none;
-      padding: 0.5rem 0.75rem;
+    background-color: var(--buttonGreen);
+    color: var(--white);
+    font-family: 'Open Sans', sans-serif;
+    font-size: larger;
+    font-weight: 900;
+    width: 190px;
+    height: 49px;
+    border-style: none;
+    padding: 0.5rem 0.75rem;
   }
+
   .postBtn:hover {
     border-style: solid;
     border-color: var(--white);
   }
+
   .postBtn:focus,
   .postBtn:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
@@ -432,11 +433,11 @@ export default {
     }
 
     .signUpLink {
-    font-weight: 900;
-  }
+      font-weight: 900;
+    }
   }
   .spaceContainer span:hover {
-      text-decoration: underline;
+    text-decoration: underline;
   }
 
   .desBox {
@@ -467,15 +468,13 @@ export default {
   }
 
   .desBox{
-      width: 585px;
-    }
+    width: 585px;
+  }
 
   .footer{
     height: 25px;
     padding: 25px 50px;
-  
   }
-  
 }
  
   @media screen and (max-width: 780px) {
@@ -497,7 +496,6 @@ export default {
       z-index: -1;
     }
 
-  
     .footer {      
       padding: 35px 50px;
       display: flex;
@@ -506,9 +504,9 @@ export default {
       justify-content: space-evenly;
   
       a {
-      text-decoration: underline;
-      text-align: center;
-      padding-right: 0px;
+        text-decoration: underline;
+        text-align: center;
+        padding-right: 0px;
       }
     }
 
@@ -538,7 +536,6 @@ export default {
       justify-content: space-evenly;
       width: 100%;
       gap: 0px;
-      // margin-top: 486.49px;
       margin-top: 186.49px;
       padding: 30px 0;
       background-color: var(--navBackground);
@@ -546,14 +543,11 @@ export default {
       color: var(--white);
       transition: 0.5s ease-in-out;
       font-size: 1.5em;
-
     }
 
     .router_links.active{
       right: 0;
     }
-
-   
 
     .logoImg {
       height: 60px;
@@ -571,6 +565,7 @@ export default {
     .post {
       width: 600px;
     } 
+    
     .boxWrapper{
       z-index: 1;
     }

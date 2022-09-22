@@ -42,6 +42,7 @@ export default {
   .homePage {
     text-align: right;
   }
+
   h1 {
     text-align: right;
     padding-right: 150px;
@@ -50,6 +51,7 @@ export default {
     color: white;
     line-height: 1.1;
   }
+
   h3 {
     padding-right: 150px;
     text-align: right;
@@ -58,6 +60,7 @@ export default {
     line-height: 40px;
     color: white;
   }
+
   .buttons {
     margin-right: 150px;
     display: flex;
@@ -66,6 +69,7 @@ export default {
     gap: 20px;
     border-style: none;
   }
+
   .exploreBtn {
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
@@ -76,6 +80,7 @@ export default {
     transition: border-color 0.25s;
     text-align: right;
   }
+  
   .signUpBtn {
     border: 1px solid transparent;
     padding: 0.6em 1.2em;

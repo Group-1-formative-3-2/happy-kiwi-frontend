@@ -1,8 +1,8 @@
 <template>
     <div class='ExploreWrapper createPostContainer'>
-            <div id='bg'>
-                <img class='back' src='../assets/Explore_Page.jpg' alt=''>
-            </div>
+        <div id='bg'>
+            <img class='back' src='../assets/Explore_Page.jpg' alt=''>
+        </div>
 
       <!-- EDIT VIEW -->
         <div class='boxWrapper' v-show='!postSwitch'>
@@ -19,7 +19,7 @@
             <label class='title' for='Description'>Description:</label>
           
 
-            <textarea class='desBox' type='text' v-model='formValues.description'></textarea>
+            <textarea class='desBox exploreBox' type='text' v-model='formValues.description'></textarea>
             <br>
             <div class='buttonBox'>
               <button @click='postSwitch = true' class='editCancel'>Cancel</button>
@@ -99,24 +99,24 @@
           description: '',
           imgLink: ''
         },
-          allComments: [],
-          commentList: [],
-          postedComments: [],
-          postsData: [],
-          commentBoxInput: '',
-          commentFormValues: {
-            user_id: '',
-            post_id: '',
-            message: '',
-          },
-          details: {
-            post_id: ''
-          },
-          msg: '',
-          postSwitch: true,
-          commentToggle: true,
-          isReplyBtnEnable: true
-        }
+        allComments: [],
+        commentList: [],
+        postedComments: [],
+        postsData: [],
+        commentBoxInput: '',
+        commentFormValues: {
+          user_id: '',
+          post_id: '',
+          message: '',
+        },
+        details: {
+          post_id: ''
+        },
+        msg: '',
+        postSwitch: true,
+        commentToggle: true,
+        isReplyBtnEnable: true
+      }
     },
     methods: {
         clearInputs(){
@@ -128,7 +128,7 @@
         getDoc(id) { 
           this.id = id
           fetch(api + this.id, {
-              method: 'GET'
+            method: 'GET'
           })
             .then((response) => response.json())
             .then((data) => {
@@ -144,11 +144,11 @@
         },
         updateDoc(){
           fetch(api + this.id, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(this.formValues)
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.formValues)
           })
             .then((response) => response.text())
             .then((data) => {
@@ -156,24 +156,24 @@
             this.getAll()
             this.clearInputs()
             this.postSwitch = true
-          })
+            })
             .catch((err) => {
               if (err) throw err;
-          })
-          },
+            })
+        },
         deleteDoc(id) { 
           fetch(api + id, {
-              method: 'DELETE'           
-            })
-            .then((response) => response.text())
-            .then((data) => {
-              alert('Work has been deleted')
-              this.getAll()
-              this.postSwitch = true
-            })
-            .catch((err) => {
-              if (err) throw err;
-            })
+            method: 'DELETE'           
+          })
+          .then((response) => response.text())
+          .then((data) => {
+            alert('Work has been deleted')
+            this.getAll()
+            this.postSwitch = true
+          })
+          .catch((err) => {
+            if (err) throw err;
+          })
         }, 
         getAll(){
           fetch(api)
@@ -182,7 +182,7 @@
             this.posts = data
             data.forEach((post) => {
               this.postsData[post._id] = post;
-              });
+            });
           })
           .catch((err) => {
             if (err) throw err;
@@ -212,7 +212,6 @@
         this.commentFormValues.message = '';
         this.commentBoxInput = '';
         this.isReplyBtnEnable = true;
-        
       },
       getComments(post_id) {
         this.commentList = [];
@@ -262,7 +261,7 @@
   /* Explore Page */
   ul {
     list-style-type: none;
-}
+  }
   
   li {
     background-color: rgba(255, 255, 255, 0.95);
@@ -280,12 +279,15 @@
     overflow: scroll;
     height: 95px;
     padding: 0;
+
     .commentList{
       padding: 0px;
       background-color: transparent;   
+
       h5{
         margin: 0;
       }
+      
       p{
         margin-top: 0;
       }
@@ -347,12 +349,7 @@
     justify-content: space-between;
     gap: 20px;
     margin-top: 20px;
-  }
-
-  textarea{
-    width: 100%;
-  }
-  
+  }  
  
   .createBox {
     height: 30px;
@@ -403,9 +400,7 @@
     transition: border-color 0.25s;
     border-style: none;
   }
-  
-  
-  
+
   @media screen and (max-width: 1500px) {
     .postContainer {
       display: grid;
@@ -414,18 +409,23 @@
       gap: 50px;
       padding: 0;
     }
+
     .postImg {
       width: 100%;
       height: 300px;
       object-fit: cover;
     }
+
+    .exploreBox{
+      width: 585px;
+    }
   }
   
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 780px) {
     .post {
       width: 600px;
     }
-  
+
     .postContainer {
       display: grid;
       margin: 30px 50px;
@@ -435,6 +435,9 @@
     }
     .postImg {
       width: 100%;
+    }
+    .exploreBox{
+      width: 365px;
     }
   }
 </style>
