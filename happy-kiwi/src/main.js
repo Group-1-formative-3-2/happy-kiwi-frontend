@@ -33,11 +33,6 @@ const navMenu = document.querySelector('.router_links')
 hamburger.addEventListener('click', () => {
    hamburger.classList.toggle('active')
    navMenu.classList.toggle('active')
-   // const createPostContainer = document.getElementsByClassName(
-   //        "createPostContainer"
-   //      )[0];
-   //      createPostContainer.classList.toggle("zIndex1")
-
 })
 
 document.querySelectorAll('.router_links').forEach(n => n.addEventListener('click', ()=> {
