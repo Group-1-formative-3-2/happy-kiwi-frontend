@@ -49,70 +49,82 @@
 </template>
 
 <script>
-import SignUpPage from "./SignUpPage.vue";
-const apiUsers = "https://api-users-login.netlify.app/.netlify/functions/api";
-export default {
-  data() {
-    return {
-      users: [],
-      loggedUser: "",
-      isLogin: true,
-      formValue: {
-        email: "",
-        password: "",
-      },
-      errorMessage: "",
-    };
-  },
-
-  components: {
-    SignUpPage,
-  },
-
-  methods: {
-    login() {
-      this.users.forEach((users) => {
-        if (
-          users.email == this.formValue.email.toLowerCase() &&
-          users.password == this.formValue.password
-        ) {
-          this.loggedUser = users.firstname + " " + users.lastname;
-          this.isLogin = true;
-          // localStorage.userId = users._id;
-          localStorage.loggedUser = this.loggedUser;
-          window.location.replace("explore");
-        }
-      });
-      if (!this.isLogin) {
-        this.errorMessage = "Email and password must be match!";
-      }
+  import SignUpPage from "./SignUpPage.vue";
+  const apiUsers = "https://api-users-login.netlify.app/.netlify/functions/api";
+  export default {
+    data() {
+      return {
+        users: [],
+        loggedUser: "",
+        isLogin: true,
+        formValue: {
+          email: "",
+          password: "",
+        },
+        errorMessage: "",
+      };
     },
-  },
 
-  mounted() {
-    const loginForm = document.getElementById("loginForm");
-    loginForm.classList.add("zIndex");
+    components: {
+      SignUpPage,
+    },
 
-    // check if user is logged-in, do not show login form
-    if (localStorage.loggedUser) {
-      this.user = false;
-    }
+    methods: {
+      login() {
+        this.users.forEach((users) => {
+          if (
+            users.email == this.formValue.email.toLowerCase() &&
+            users.password == this.formValue.password
+          ) {
+            this.loggedUser = users.firstname + " " + users.lastname;
+            this.isLogin = true;
+            // localStorage.userId = users._id;
+            localStorage.loggedUser = this.loggedUser;
+            window.location.replace("explore");
+          }
+        });
+        if (!this.isLogin) {
+          this.errorMessage = "Email and password must be match!";
+        }
+      },
+    },
 
-    // get all users
-    fetch(apiUsers)
-      .then((response) => response.json())
-      .then((data) => {
-        this.users = data;
-      })
-      .catch((err) => {
-        if (err) throw err;
-      });
-  },
-};
+    mounted() {
+      const loginForm = document.getElementById("loginForm");
+      console.log(loginForm);
+      const boxWrapper = document.getElementsByClassName("boxWrapper")[0];
+      console.log(boxWrapper);
+
+      loginForm.classList.add("zIndex1");
+      //loginForm.classList.add("zIndex0");
+
+      boxWrapper.classList.add("zIndex0");
+      //boxWrapper.classList.add("zIndex1");
+      // loginForm.classList.add("zIndex");
+
+      // check if user is logged-in, do not show login form
+      if (localStorage.loggedUser) {
+        this.user = false;
+      }
+
+      // get all users
+      fetch(apiUsers)
+        .then((response) => response.json())
+        .then((data) => {
+          this.users = data;
+        })
+        .catch((err) => {
+          if (err) throw err;
+        });
+    },
+  };
 </script>
 
 <style scoped>
-.zIndex {
-  z-index: 1;
-}
+  .zIndex1 {
+    z-index: -1 !important;
+  }
+  .zIndex0 {
+    z-index: 0 !important;
+  }
 </style>
