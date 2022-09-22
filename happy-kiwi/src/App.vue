@@ -469,6 +469,13 @@ export default {
   .desBox{
       width: 585px;
     }
+
+  .footer{
+    height: 25px;
+    padding: 25px 50px;
+  
+  }
+  
 }
  
   @media screen and (max-width: 780px) {
@@ -491,9 +498,8 @@ export default {
     }
 
   
-    .footer {
-      height: 45px;
-      padding: 20px 50px;
+    .footer {      
+      padding: 35px 50px;
       display: flex;
       flex-direction: column;
       align-items: center;
