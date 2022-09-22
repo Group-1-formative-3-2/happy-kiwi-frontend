@@ -33,6 +33,7 @@ const navMenu = document.querySelector('.router_links')
 hamburger.addEventListener('click', () => {
    hamburger.classList.toggle('active')
    navMenu.classList.toggle('active')
+   console.log("xx")
 })
 
 document.querySelectorAll('.router_links').forEach(n => n.addEventListener('click', ()=> {
