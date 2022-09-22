@@ -348,6 +348,10 @@
     gap: 20px;
     margin-top: 20px;
   }
+
+  textarea{
+    width: 100%;
+  }
   
  
   .createBox {

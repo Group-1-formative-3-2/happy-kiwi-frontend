@@ -24,7 +24,7 @@
                 <textarea class='desBox' type='text' v-on:input='formValues.description = $event.target.value'></textarea>
                 <br>
                 <div class='centerContainer'>
-                    <input type="submit" value="Post" class='postBtn'/>
+                    <input type='submit' value='Post' class='postBtn'/>
                 </div>
             </form>
         </div>

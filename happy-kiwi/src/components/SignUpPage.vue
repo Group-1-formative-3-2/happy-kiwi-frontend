@@ -77,7 +77,7 @@
         </select>
         <br />
         <div class='spaceContainer'>
-          <router-link to='/login' class="signUpLink">Sign In</router-link>
+          <router-link to='/login' class='signUpLink'>Sign In</router-link>
           <span class='passwordLink'>Forgot Password</span>
         </div>
         <br />
