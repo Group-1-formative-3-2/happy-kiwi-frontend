@@ -1,25 +1,25 @@
 <template>
   <div class='appContainer'>
     <div class='header' v-show='switchSlide'>
-      <a href='/'
-        ><img class='logoImg' src='./assets/official_logo.png' alt='#'
-      /></a>
-      <div class='router_links'>
-        <router-link to='/'>Home</router-link>
-        <router-link to='/explore'>Explore</router-link>
-        <router-link to='/login'>Login</router-link>
-        <div class='switchSlideBtn' @click='switchSlide = false'>View</div>
-        <!-- ^^ for viewing screensaver on homepage -->
-        <router-link to='/createpost' class='right'>Create Post</router-link>
+      <div class="navWrapper">
+        <a href='/'
+          ><img class='logoImg' src='./assets/official_logo.png' alt='#'
+        /></a>
+        <div class='router_links'>
+          <router-link to='/'>Home</router-link>
+          <router-link to='/explore'>Explore</router-link>
+          <router-link to='/login'>Login</router-link>
+          <div class='switchSlideBtn' @click='switchSlide = false'>View</div>
+          <!-- ^^ for viewing screensaver on homepage -->
+          <router-link to='/createpost' class='right'>Create Post</router-link>
+        </div>
       </div>
 
-      <div>
-        <h3>{{ loggedName }}</h3>
-      </div>
-
-      <div>
-        <h3 v-if='loggedName' @click='logOut' style='cursor:pointer'>Log Out</h3>
-      </div>
+      <div class="login">
+        <h3 class="logName">{{ loggedName }}</h3>
+        <h3 class="logOut" v-if='loggedName' @click='logOut' style='cursor:pointer'>Log Out</h3>
+      
+    </div>
 
       <div class='hamburger'>
         <span class='bar'></span>
@@ -273,7 +273,7 @@ export default {
   .header {
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;;
     gap: 30px;
     background-color: var(--boxBackground);
     backdrop-filter: blur(27px);
@@ -315,6 +315,13 @@ export default {
     .router_link:active {
       text-decoration: underline;
       color: var(--white);
+    }
+    .logName:hover{
+      text-decoration: underline;
+    }
+
+    .logOut:hover{
+      text-decoration: underline;
     }
   
   }
@@ -462,14 +469,86 @@ export default {
     margin-bottom: 5px;
   }
 
-  @media screen and (max-width: 1500px) {
-  .router_links{
+  .navWrapper{
     display: flex;
     flex-direction: row;
-    font-size: 1.4em;
-    gap: 40px;
+    align-items: center;
+    gap: 50px;
   }
 
+  // login
+  .login{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 0 80px;
+  }
+
+  .logName:hover{
+    text-decoration: underline;
+  }
+
+  .logOut:hover{
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 1500px) {
+  // .router_links{
+  //   display: flex;
+  //   flex-direction: row;
+  //   font-size: 1.4em;
+  //   gap: 40px;
+  // }
+
+
+  .hamburger{
+      display: block;
+      cursor: pointer;
+      padding-right: 50px;
+    }
+
+    .hamburger.active .bar:nth-child(2){
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1){
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3){
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .router_links{
+      position: fixed;
+      right: -100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+      gap: 0px;
+      margin-top: 186.49px;
+      padding: 30px 0;
+      background-color: var(--navBackground);
+      backdrop-filter: blur(27px);
+      color: var(--white);
+      transition: 0.5s ease-in-out;
+      font-size: 1.5em;
+    }
+
+    .router_links.active{
+      right: 0;
+    }
+
+    .logoImg {
+      height: 60px;
+      margin-top: 20px;
+      margin-left: 40px;
+      margin-bottom: 20px;
+    }
+
+  
   .desBox{
     width: 585px;
   }
