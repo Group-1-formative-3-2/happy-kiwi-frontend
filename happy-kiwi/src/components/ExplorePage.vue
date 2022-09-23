@@ -179,7 +179,7 @@
           fetch(api)
           .then((response) => response.json())
           .then((data) => {
-            this.posts = data
+            this.posts = data.reverse()
             data.forEach((post) => {
               this.postsData[post._id] = post;
               });
@@ -230,7 +230,7 @@
         fetch(apiMessages)
         .then((response) => response.json())
         .then((data) => {
-          this.allComments = data;
+          this.allComments = data.reverse();
           this.postedComments = this.allComments.reduce((results, msg) => {
             results[msg.post_id] = results[msg.post_id] || [];
             results[msg.post_id].push(msg);
