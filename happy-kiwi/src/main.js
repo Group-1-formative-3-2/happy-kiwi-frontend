@@ -27,6 +27,7 @@ createApp(App)
    .mount('#app')
 
 
+// Hamburger Menu Animation classlist additon.
 const hamburger = document.querySelector('.hamburger')
 const navMenu = document.querySelector('.router_links')
 

@@ -52,7 +52,7 @@
           placeholder='confirm password'
           v-model='confirmPassword'
         />
-        <span class='notes '>{{ passwordMatch }}</span>
+        <span class='notes'>{{ passwordMatch }}</span>
 
         <br />
         <label for='region' class='title'>Region:</label>
@@ -164,20 +164,22 @@ export default {
 </script>
 
 
-<style scoped>
-.createBox-signUp {
-  height: 30px;
-  display: block;
-  margin-left: 45px;
-  margin-right: 45px;
-  width: 40%;
-}
-.sigIn-input {
-  display: flex;
-  flex-direction: row;
-}
-.notes {
-  margin-left: 45px;
-  margin-right: 45px;
-}
+  <style scoped>
+  .createBox-signUp {
+    height: 30px;
+    display: block;
+    margin-left: 45px;
+    margin-right: 45px;
+    width: 40%;
+  }
+
+  .sigIn-input {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .notes {
+    margin-left: 45px;
+    margin-right: 45px;
+  }
 </style>
