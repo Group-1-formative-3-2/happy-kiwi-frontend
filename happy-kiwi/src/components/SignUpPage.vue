@@ -1,3 +1,4 @@
+<!-- CODED BY KAY, AMY FIXED A FEW VALIDATION ISSUES BASED ON TESTING -->
 <template>
   <div class='createPostContainer'>
     <div id='bg'>
@@ -13,7 +14,7 @@
             type='firstname'
             class='createBox-signUp'
             id='inputFirstname'
-            placeholder='Your Firstname'
+            placeholder='Firstname'
             v-model='signUpFormValues.firstname'
           />
           <input
@@ -21,7 +22,7 @@
             type='lasttname'
             class='createBox-signUp'
             id='inputLastname'
-            placeholder='Your Surname'
+            placeholder='Surname'
             v-model='signUpFormValues.lastname'
           />
         </div>
@@ -31,18 +32,18 @@
           pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$' 
           id='email'
           class='createBox'
-          placeholder='enter a valid email address'
+          placeholder='Enter a valid email address'
           v-model='signUpFormValues.email'
         />
         <br />
         <label for='InputPassword1' class='title'>Password:</label>
-        <p>Must include at least 8 characters, at least 1 capital letter and at least 1 number.</p>
+        <p class="notes">Must include at least 8 characters, at least 1 capital letter and at least 1 number.</p>
         <input
           pattern='[a-zA-Z0-9]{8,}'
           id='password'
           type='password'
           class='createBox'
-          placeholder='at least 8 characters'
+          placeholder='Password'
           v-model='signUpFormValues.password'
         />
         <br />
@@ -51,7 +52,7 @@
           type='password'
           class='createBox'
           id='InputPassword'
-          placeholder='confirm password'
+          placeholder='Confirm Password'
           v-model='confirmPassword'
         />
         <span class='notes'>{{ passwordMatch }}</span>
@@ -61,7 +62,7 @@
         <select name='region' id='' class='createBox'>
           <option value='Northland'>Northland</option>
           <option value='Auckland'>Auckland</option>
-          <option value='Walkato'>Walkato</option>
+          <option value='Waikato'>Waikato</option>
           <option value='BayofPlenty'>Bay of Plenty</option>
           <option value='Gisborne'>Gisborne</option>
           <option value='Taranaki'>Taranaki</option>
@@ -79,7 +80,7 @@
         </select>
         <br />
         <div class='spaceContainer'>
-          <router-link to='/login' class='signUpLink'>Sign In</router-link>
+          <router-link to='/login' class='signUpLink'>Login</router-link>
           <span class='passwordLink'>Forgot Password</span>
         </div>
         <br />
@@ -123,7 +124,7 @@ export default {
   },
   methods: {
     signUp() {
-      console.log(this.signUpFormValues);
+      this.isEmailError = false;
       //checking email add from db
       this.users.forEach((user) => {
         if (user.email == this.signUpFormValues.email) {
@@ -139,8 +140,8 @@ export default {
         })
           .then((response) => response.text())
           .then((data) => {
-            console.log(data);
-            this.isSignUp = true;
+            alert("You are now signed up, you can now log in")
+            window.location.replace('login');
           })
           .catch((err) => {
             if (err) throw err;

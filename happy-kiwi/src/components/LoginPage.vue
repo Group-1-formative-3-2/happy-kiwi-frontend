@@ -4,13 +4,12 @@
       <img class='back' src='../assets/Login_Page.jpg' alt='' />
     </div>
     <div class='boxWrapper'>
-      <form class='post' v-if='isLogin' @submit.prevent='login'>
+      <form class='post' v-if='showLoginForm' @submit.prevent='login'>
         <div><h2 class='head centerContainer'>Login</h2></div>
 
         <label for='inputEmail1' class='title'>E-mail:</label>
         <input
           class='createBox'
-          pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
           v-model='formValue.email'
           id='email'
           required
@@ -22,7 +21,6 @@
         <label for='InputPassword1' class='title'>Password:</label>
         <input
           class='createBox'
-          pattern='[a-zA-Z0-9]{8,}'
           v-model='formValue.password'
           id='password'
           required
@@ -41,8 +39,7 @@
           <!-- <button type='submit' class='postBtn'>Go</button> -->
           <input type='submit' class='postBtn' value='Go' />
         </div>
-        <br />
-        <div class='centerContainer'>{{ errorMessage }}</div>
+
       </form>
     </div>
   </div>
@@ -56,7 +53,8 @@ export default {
     return {
       users: [],
       loggedUser: '',
-      isLogin: true,
+      isLogin: false,
+      showLoginForm: true,
       formValue: {
         email: '',
         password: '',
@@ -71,6 +69,7 @@ export default {
 
   methods: {
     login() {
+      console.log("test")
       this.users.forEach((users) => {
         if (
           users.email == this.formValue.email.toLowerCase() &&
@@ -78,14 +77,14 @@ export default {
         ) {
           this.loggedUser = users.firstname + ' ' + users.lastname;
           this.isLogin = true;
-          // localStorage.userId = users._id;
           localStorage.loggedUser = this.loggedUser;
           window.location.replace('explore');
         }
       });
+
       if (!this.isLogin )
         {
-          this.errorMessage = 'Email and password must be match!';
+          alert("Email or Password incorrect")
         }
     },
   },
