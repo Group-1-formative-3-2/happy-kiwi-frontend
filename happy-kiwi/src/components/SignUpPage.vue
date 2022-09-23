@@ -36,9 +36,11 @@
         />
         <br />
         <label for='InputPassword1' class='title'>Password:</label>
+        <p>Must include at least 8 characters, at least 1 capital letter and at least 1 number.</p>
         <input
           pattern='[a-zA-Z0-9]{8,}'
           id='password'
+          type='password'
           class='createBox'
           placeholder='at least 8 characters'
           v-model='signUpFormValues.password'
